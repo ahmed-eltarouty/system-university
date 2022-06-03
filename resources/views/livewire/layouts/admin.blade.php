@@ -72,7 +72,10 @@
 <!--End  Header -->
 
 <!-- Begin SideBar-->
-@include('livewire.components.sidebar')
+@if(Auth::guard('admin')->check())
+    @include('livewire.components.sidebar')
+@endif
+
 
 <!--End Sidebare-->
 <div class="app-content content">

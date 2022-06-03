@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Students;
+namespace App\Http\Livewire\Admin\Students;
 
 use App\Models\User;
 use Livewire\Component;
@@ -25,7 +25,7 @@ class ShowStudents extends Component
             ->orWhere('semester','like',$searchSection)
             ->orderBy('id','desc')
             ->paginate($this->count);
-        return view('livewire.students.show-students',['students'=>$students])->layout('livewire.layouts.admin');
+        return view('livewire.admin.students.show-students',['students'=>$students])->layout('livewire.layouts.admin');
     }
 
     // ===================================== Delete ====================================================

@@ -18,9 +18,10 @@ return new class extends Migration
             $table->string('name');
             $table->string('phone')->nullable();
             $table->string('address')->nullable();
-            $table->string('semester')->nullable();
+            $table->integer('semester')->nullable();
             $table->year('year_enrolled')->nullable();
             $table->integer('total_registered_hours')->nullable();
+            $table->integer('total_finished_hours')->nullable();        ///////// new need to add
             $table->integer('max_register_hours')->nullable();
             $table->integer('min_register_hours')->nullable();
             $table->float('GPA')->nullable();

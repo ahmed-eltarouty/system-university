@@ -1,19 +1,21 @@
 <?php
 
 use App\Http\Controllers\AdminController;
-use App\Http\Livewire\Students\AddStudents;
+use App\Http\Livewire\Admin\Students\AddStudents;
 use App\Http\Livewire\Ahmed;
-use App\Http\Livewire\Students\EditStudent;
-use App\Http\Livewire\Students\ShowStudents;
-use App\Http\Livewire\Subjects\AddSubject;
-use App\Http\Livewire\Subjects\AddSubjectCategory;
-use App\Http\Livewire\Subjects\EditSubject;
-use App\Http\Livewire\Subjects\EditSubjectCategory;
-use App\Http\Livewire\Subjects\ShowSubjects;
-use App\Http\Livewire\Subjects\SubjectCategory;
-use App\Http\Livewire\Supervisor\AddSupervisor;
-use App\Http\Livewire\Supervisor\EditSupervisor;
-use App\Http\Livewire\Supervisor\ShowSupervisor;
+use App\Http\Livewire\Admin\Settings\Settings;
+use App\Http\Livewire\Admin\Students\EditStudent;
+use App\Http\Livewire\Admin\Students\ShowStudents;
+use App\Http\Livewire\Admin\Subjects\AddSubject;
+use App\Http\Livewire\Admin\Subjects\AddSubjectCategory;
+use App\Http\Livewire\Admin\Subjects\EditSubject;
+use App\Http\Livewire\Admin\Subjects\EditSubjectCategory;
+use App\Http\Livewire\Admin\Subjects\ShowSubjects;
+use App\Http\Livewire\Admin\Subjects\SubjectCategory;
+use App\Http\Livewire\Admin\Supervisor\AddSupervisor;
+use App\Http\Livewire\Admin\Supervisor\EditSupervisor;
+use App\Http\Livewire\Admin\Supervisor\ShowSupervisor;
+use App\Http\Livewire\Sudents\AddSemester;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -59,6 +61,10 @@ Route::middleware(['auth:sanctum,admin','auth:admin',config('jetstream.auth_sess
     Route::get('/add-subject-category',AddSubjectCategory::class)->name('admin.add-subject-category');
     Route::get('/all-subject-category',SubjectCategory::class)->name('admin.show-subject-category');
     Route::get('/edit-subject-category/{id}',EditSubjectCategory::class)->name('admin.edit-subject-category');
+
+    Route::get('/settings',Settings::class)->name('admin.settings');
+
+    Route::get('/test1',AddSemester::class)->name('admin.test1');
 });
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

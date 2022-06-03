@@ -24,4 +24,12 @@ class Subject extends Model
         'subject_status',
         'status',
     ];
+
+    // public function semester(){
+    //     return $this->belongsToMany('App\Models\Semester', 'semesters_subjects', 'subject_id', 'semester_id');
+    // }
+
+    public function category(){
+        return $this->belongsTo('App\Models\SubjectCategory', 'category_id');
+    }
 }

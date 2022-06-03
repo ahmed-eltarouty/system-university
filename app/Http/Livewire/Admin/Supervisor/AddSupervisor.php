@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Supervisor;
+namespace App\Http\Livewire\Admin\Supervisor;
 
 use App\Models\Supervisor;
 use Illuminate\Support\Facades\Hash;
@@ -65,6 +65,6 @@ class AddSupervisor extends Component
 
     public function render()
     {
-        return view('livewire.supervisor.add-supervisor')->layout('livewire.layouts.admin');
+        return view('livewire.admin.supervisor.add-supervisor')->layout('livewire.layouts.admin');
     }
 }

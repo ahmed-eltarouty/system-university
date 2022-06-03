@@ -133,7 +133,7 @@
                                                         @enderror
                                                     </div>
                                                 </div>
-
+{{--
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label for="projectinput1"> ادخل اسم المادة المشروطه انتهائها قبل اختيار هذه المادة </label>
@@ -141,7 +141,24 @@
                                                             <optgroup label="من فضلك أختر المادة ">
                                                                 <option value="">لا يوجد</option>
                                                                 @foreach ($subjects as $subject)
-                                                                    <option value="{{$subject->id}}"{{$finished_subject1==$subject->id ? 'selected': ''}}>{{$subject->name}}</option>
+                                                                    <option value="{{$subject->id}}">{{$subject->name}}</option>
+                                                                @endforeach
+                                                            </optgroup>
+                                                        </select>
+                                                        @error('finished_subject1')
+                                                        <span class="text-danger">{{$message}}</span>
+                                                        @enderror
+                                                    </div>
+                                                </div> --}}
+
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="projectinput1"> ادخل اسم المادة الأولى المشروطه انتهائها قبل اختيار هذه المادة </label>
+                                                        <select name="finished_subject1" wire:model="finished_subject1" class="form-control">
+                                                            <optgroup label="من فضلك أختر المادة ">
+                                                                <option value="">لا يوجد</option>
+                                                                @foreach ($subjects as $subject)
+                                                                    <option value="{{$subject->id}}">{{$subject->name}}</option>
                                                                 @endforeach
                                                             </optgroup>
                                                         </select>

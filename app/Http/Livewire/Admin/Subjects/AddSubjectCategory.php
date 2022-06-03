@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Subjects;
+namespace App\Http\Livewire\Admin\Subjects;
 
 use App\Models\SubjectCategory;
 use Livewire\Component;
@@ -71,6 +71,6 @@ class AddSubjectCategory extends Component
 
     public function render()
     {
-        return view('livewire.subjects.add-subject-category')->layout('livewire.layouts.admin');
+        return view('livewire.admin.subjects.add-subject-category')->layout('livewire.layouts.admin');
     }
 }

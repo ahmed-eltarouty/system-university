@@ -69,7 +69,7 @@
 
             <li class="nav-item">
                 <a href=""><i class="la la-male"></i>
-                    <span class="menu-title" data-i18n="nav.dash.main">تذاكر المراسلات   </span>
+                    <span class="menu-title" data-i18n="nav.dash.main">الاعدادات  </span>
                     <span
                         class="badge badge badge-danger  badge-pill float-right mr-2">0</span>
                 </a>
@@ -114,6 +114,12 @@
                     </li>
                 </ul>
             </li>
+
+
+            <li class=" nav-item"><a href="{{route('admin.settings')}}"><i class="la la-envelope"></i><span
+                class="menu-title" data-i18n="">الإعدادات</span></a>
+            </li>
+
             <li class=" navigation-header">
                 <span data-i18n="nav.category.layouts">Layouts</span><i class="la la-ellipsis-h ft-minus"
                                                                         data-toggle="tooltip"

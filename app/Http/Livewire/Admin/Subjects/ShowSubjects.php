@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Subjects;
+namespace App\Http\Livewire\Admin\Subjects;
 
 use App\Models\Subject;
 use Livewire\Component;
@@ -21,7 +21,7 @@ class ShowSubjects extends Component
         $subjects = Subject::where('name','like',$searchSection)
             ->orWhere('code','like',$searchSection)
             ->paginate($this->count);
-        return view('livewire.subjects.show-subjects',['subjects'=>$subjects])->layout('livewire.layouts.admin');
+        return view('livewire.admin.subjects.show-subjects',['subjects'=>$subjects])->layout('livewire.layouts.admin');
     }
 
 

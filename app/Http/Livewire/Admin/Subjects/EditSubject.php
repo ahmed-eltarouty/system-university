@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Subjects;
+namespace App\Http\Livewire\Admin\Subjects;
 
 use App\Models\Subject;
 use App\Models\SubjectCategory;
@@ -22,6 +22,8 @@ class EditSubject extends Component
     public $category_id;
     public $subject_status=1;
     public $status=1;
+
+
 
     public function mount($id){
         try{
@@ -84,8 +86,8 @@ class EditSubject extends Component
                 'min_degree'=>$this->min,
                 'total_students_can_register'=>$this->students_number,
                 'GPA_Greater_Than'=>$this->GPA,
-                'finished_subject_id_1'=>$this->finished_subject1,
-                'finished_subject_id_2'=>$this->finished_subject2,
+                'finished_subject_id_1'=>$this->finished_subject1 ? $this->finished_subject1 : null,
+                'finished_subject_id_2'=>$this->finished_subject2 ? $this->finished_subject2 : null,
                 'required_hours'=>$this->required_hours,
                 'category_id'=>$this->category_id,
                 'subject_status'=>$this->subject_status,
@@ -102,6 +104,6 @@ class EditSubject extends Component
     {
         $categories=SubjectCategory::all();
         $subjects = Subject::all();
-        return view('livewire.subjects.edit-subject',['subjects'=>$subjects,'categories'=>$categories])->layout('livewire.layouts.admin');
+        return view('livewire.admin.subjects.edit-subject',['subjects'=>$subjects,'categories'=>$categories])->layout('livewire.layouts.admin');
     }
 }

@@ -25,7 +25,7 @@ Route::middleware('supervisor:supervisor')->group(function(){
 
 Route::middleware(['auth:sanctum,supervisor',config('jetstream.auth_session'),'verified'])->group(function () {
     Route::get('/supervisor/dashboard', function () {
-        return view('dashboard');
+        return view('supervisor.dashboard');
     })->name('dashboard')->middleware('auth:supervisor');
 });
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

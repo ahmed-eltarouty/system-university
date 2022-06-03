@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Supervisor;
+namespace App\Http\Livewire\Admin\Supervisor;
 
 use App\Models\Supervisor;
 use Livewire\Component;
@@ -21,7 +21,7 @@ class ShowSupervisor extends Component
             ->orWhere('email','like',$searchSection)
             ->orWhere('phone','like',$searchSection)
             ->paginate($this->count);
-        return view('livewire.supervisor.show-supervisor',['supervisors'=>$supervisors])->layout('livewire.layouts.admin');
+        return view('livewire.admin.supervisor.show-supervisor',['supervisors'=>$supervisors])->layout('livewire.layouts.admin');
     }
 
 

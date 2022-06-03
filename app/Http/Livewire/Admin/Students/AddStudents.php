@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Http\Livewire\Students;
+namespace App\Http\Livewire\Admin\Students;
 
 use App\Models\Supervisor;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Livewire\Component;
 
-class EditStudent extends Component
+
+class AddStudents extends Component
 {
-    public $student;
     public $name;
     public $phone;
     public $address;
@@ -24,28 +24,6 @@ class EditStudent extends Component
     public $email;
     public $password;
 
-    public function mount($id){
-
-        try{
-            $this->student = User::find($id);
-            $this->name=$this->student->name;
-            $this->phone=$this->student->phone;
-            $this->address=$this->student->address;
-            $this->semester=$this->student->semester;
-            $this->year_enrolled=$this->student->year_enrolled;
-            $this->max_register_hours=$this->student->max_register_hours;
-            $this->min_register_hours=$this->student->min_register_hours;
-            $this->supervisor_id=$this->student->supervisor_id;
-            $this->status=$this->student->status;
-            $this->GPA=$this->student->GPA;
-            $this->CGPA=$this->student->CGPA;
-            $this->email=$this->student->email;
-            $this->password=$this->student->password;
-
-        }catch(\Exception $e){
-            return session()->flash('error','عفواً حدث خطأ ما يرجى المحاولة مرة اخرى');
-        }
-    }
     protected $rules =[
         'email' =>'required|email|unique:users',
         'password' =>'required|min:8'
@@ -68,8 +46,7 @@ class EditStudent extends Component
 
     public function store(){
         try{
-            User::where('id',$this->student->id)
-                ->update([
+            User::create([
                 'name'=>$this->name,
                 'phone'=>$this->phone,
                 'address'=>$this->address,
@@ -82,11 +59,24 @@ class EditStudent extends Component
                 'supervisor_id'=>$this->supervisor_id,
                 'status'=>($this->status ? $this->status : 0),
                 'email'=>$this->email,
-                'password'=>($this->password == $this->student->password ? $this->student->password : Hash::make($this->password)),
+                'password'=>Hash::make($this->password),
             ]);
 
+            session()->flash('success','تم اضافة الطالب بنجاح ');
 
-            session()->flash('success','تم تعديل الطالب بنجاح ');
+            $this->name='';
+            $this->phone='';
+            $this->address='';
+            $this->semester='';
+            $this->year_enrolled='';
+            $this->max_register_hours='';
+            $this->min_register_hours='';
+            $this->supervisor_id='';
+            $this->status='';
+            $this->GPA='';
+            $this->CGPA='';
+            $this->email='';
+            $this->password='';
 
         } catch (\Exception $e) {
 
@@ -98,7 +88,8 @@ class EditStudent extends Component
 
     public function render()
     {
+        // $supervisors = Supervisor::find(1)->students;
         $supervisors = Supervisor::get();
-        return view('livewire.students.edit-student',['student'=>$this->student,'supervisors'=>$supervisors])->layout('livewire.layouts.admin');
+        return view('livewire.admin.students.add-students',["supervisors"=>$supervisors])->layout('livewire.layouts.admin');
     }
 }

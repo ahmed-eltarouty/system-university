@@ -86,7 +86,7 @@
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label for="projectinput1"> الترم الدراسى </label>
-                                                            <input type="text" value="" id="semester"
+                                                            <input type="number" value="" id="semester"
                                                                    class="form-control"
                                                                    placeholder="الترم الدراسى  "
                                                                    name="semester" wire:model='semester'>

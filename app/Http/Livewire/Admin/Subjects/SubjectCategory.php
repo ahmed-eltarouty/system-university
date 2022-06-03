@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Subjects;
+namespace App\Http\Livewire\Admin\Subjects;
 
 use App\Models\SubjectCategory as ModelsSubjectCategory;
 use Livewire\Component;
@@ -37,6 +37,6 @@ class SubjectCategory extends Component
     {
         $searchSection = '%'. $this->search . '%';
         $categories = ModelsSubjectCategory::where('name','like',$searchSection)->paginate($this->count);
-        return view('livewire.subjects.subject-category',['categories'=> $categories])->layout('livewire.layouts.admin');
+        return view('livewire.admin.subjects.subject-category',['categories'=> $categories])->layout('livewire.layouts.admin');
     }
 }
