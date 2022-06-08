@@ -79,4 +79,11 @@ class User extends Authenticatable
         // return $this->belongsToMany('App\Models\Semester', 'students_semesters', 'user_id', 'semester_id');
         return $this->hasMany('App\Models\Semester','user_id','id');
     }
+
+
+    public function category(){
+
+        return $this->belongsToMany('App\Models\SubjectCategory', 'user_categories', 'user_id', 'category_id');
+    }
+
 }

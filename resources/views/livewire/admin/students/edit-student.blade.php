@@ -85,7 +85,7 @@
 
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label for="projectinput1"> الترم الدراسى </label>
+                                                        <label for="projectinput1">رقم الترم الدراسى </label>
                                                         <input type="text"  id="semester"
                                                                class="form-control" value="{{$student->semester}}"
                                                                placeholder="الترم الدراسى  "

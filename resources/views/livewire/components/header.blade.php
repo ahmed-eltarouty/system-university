@@ -10,7 +10,7 @@
                     <a class="navbar-brand" href="index.html">
                         <img class="brand-logo" alt="modern admin logo"
                              src="{{asset('admin/images/logo/logo.png')}}">
-                        <h3 class="brand-text">Modern Admin</h3>
+                        <h3 class="brand-text">University System</h3>
                     </a>
                 </li>
                 <li class="nav-item d-md-none">
@@ -37,11 +37,14 @@
                             <span class="avatar avatar-online">
                   <img  style="height: 35px;" src="{{asset('admin/images/logo/logo-80x80.png')}}" alt="avatar"><i></i></span>
                         </a>
-                        <div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href=""><i
-                            class="ft-user"></i> تعديل الملف الشحصي </a>
+                        <div class="dropdown-menu dropdown-menu-right">
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href=""><i class="ft-power"></i> تسجيل
-                                الخروج </a>
+                            <a class="dropdown-item" href=""><i class="ft-power"></i>
+                                <form method="POST" action="{{ route('logout') }}">
+                                    @csrf
+                                    <button class="btn btn-outline-danger" type="submit">تسجيل الخروج</button>
+                                </form>
+                            </a>
                         </div>
                     </li>
 

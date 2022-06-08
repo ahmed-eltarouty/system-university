@@ -74,6 +74,8 @@
 <!-- Begin SideBar-->
 @if(Auth::guard('admin')->check())
     @include('livewire.components.sidebar')
+@elseif(Auth::guard('web')->check())
+    @include('livewire.students.sidebar')
 @endif
 
 

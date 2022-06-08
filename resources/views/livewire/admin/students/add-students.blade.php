@@ -85,7 +85,7 @@
 
                                                     <div class="col-md-6">
                                                         <div class="form-group">
-                                                            <label for="projectinput1"> الترم الدراسى </label>
+                                                            <label for="projectinput1"> رقم الترم الدراسى </label>
                                                             <input type="number" value="" id="semester"
                                                                    class="form-control"
                                                                    placeholder="الترم الدراسى  "
