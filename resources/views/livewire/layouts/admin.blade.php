@@ -12,7 +12,7 @@
     <meta name="author" content="PIXINVENT">
     <title>  University System </title>
     <link rel="apple-touch-icon" href="{{asset('admin/images/ico/apple-icon-120.png')}}">
-    <link rel="shortcut icon" type="image/x-icon" href="{{asset('admin/images/ico/favicon.ico')}}">
+    {{-- <link rel="shortcut icon" type="image/x-icon" href="{{asset('admin/images/ico/favicon.ico')}}"> --}}
     <link
         href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Quicksand:300,400,500,700"
         rel="stylesheet">
@@ -108,9 +108,6 @@
 <script src="{{asset('admin/vendors/js/forms/select/select2.full.min.js')}}" type="text/javascript"></script>
 <script src="{{asset('admin/js/scripts/forms/select/form-select2.js')}}" type="text/javascript"></script>
 
-<!-- BEGIN PAGE VENDOR JS-->
-<script src="{{asset('admin/vendors/js/charts/chart.min.js')}}" type="text/javascript"></script>
-<script src="{{asset('admin/vendors/js/charts/echarts/echarts.js')}}" type="text/javascript"></script>
 
 <script src="{{asset('admin/vendors/js/extensions/datedropper.min.js')}}" type="text/javascript"></script>
 <script src="{{asset('admin/vendors/js/extensions/timedropper.min.js')}}" type="text/javascript"></script>
@@ -127,86 +124,10 @@
 <script src="{{asset('admin/js/scripts/pages/dashboard-crypto.js')}}" type="text/javascript"></script>
 
 
-<script src="{{asset('admin/js/scripts/tables/datatables/datatable-basic.js')}}"
-        type="text/javascript"></script>
-<script src="{{asset('admin/js/scripts/extensions/date-time-dropper.js')}}" type="text/javascript"></script>
-<!-- END PAGE LEVEL JS-->
-
-<script src="{{asset('admin/vendors/js/tables/jquery.dataTables.min.js')}}" type="text/javascript"></script>
-<script src="{{asset('admin/vendors/js/tables/datatable/dataTables.bootstrap4.min.js')}}" type="text/javascript"></script>
-
-
-
-<script src="{{asset('admin/js/scripts/forms/checkbox-radio.js')}}" type="text/javascript"></script>
-
 <script src="{{asset('admin/js/scripts/modal/components-modal.js')}}" type="text/javascript"></script>
 
-<script>
-    $('#meridians1').timeDropper({
-        meridians: true,
-        setCurrentTime: false
-    });
-    $('#meridians2').timeDropper({
-        meridians: true,setCurrentTime: false
+<script src="{{asset('admin/vendors/js/tables/jquery.dataTables.min.js')}}" type="text/javascript"></script>
 
-    });
-    $('#meridians3').timeDropper({
-        meridians: true,
-        setCurrentTime: false
-    });
-    $('#meridians4').timeDropper({
-        meridians: true,
-        setCurrentTime: false
-    });
-    $('#meridians5').timeDropper({
-        meridians: true,setCurrentTime: false
-
-    });
-    $('#meridians6').timeDropper({
-        meridians: true,setCurrentTime: false
-    });
-    $('#meridians7').timeDropper({
-        meridians: true,setCurrentTime: false
-    });
-    $('#meridians8').timeDropper({
-        meridians: true,setCurrentTime: false
-    });
-    $('#meridians9').timeDropper({
-        meridians: true,setCurrentTime: false
-    });
-    $('#meridians10').timeDropper({
-        meridians: true,setCurrentTime: false
-    });
-    $('#meridians11').timeDropper({
-        meridians: true,setCurrentTime: false
-    });
-    $('#meridians12').timeDropper({
-        meridians: true,setCurrentTime: false
-    });
-    $('#meridians13').timeDropper({
-        meridians: true,setCurrentTime: false
-    });
-    $('#meridians14').timeDropper({
-        meridians: true,setCurrentTime: false
-    });
-
-</script>
-{{-- <script>
-    $(document).ready(function () {
-        // $('#studentstable').DataTable({
-        //     "bDestroy": true
-        // });
-        $('#subjectsTable').DataTable({
-
-            "bDestroy": true
-        });
-        $('#supervisorsTable').DataTable({
-
-            "bDestroy": true
-        });
-
-    }); --}}
-</script>
 @livewireScripts
 </body>
 </html>

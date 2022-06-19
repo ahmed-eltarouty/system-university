@@ -11,6 +11,7 @@ use Livewire\Component;
 class AddStudents extends Component
 {
     public $name;
+    public $code;
     public $phone;
     public $address;
     public $semester;
@@ -25,7 +26,9 @@ class AddStudents extends Component
     public $password;
 
     protected $rules =[
+        'name' =>'required',
         'email' =>'required|email|unique:users',
+        'code' =>'unique:users',
         'password' =>'required|min:8'
     ];
 
@@ -34,6 +37,7 @@ class AddStudents extends Component
         'email.required' => 'عفوا يجب ادخال بريد الكترونى',
         'email.email' => 'عفوا البريد الالكترونى غير صحيح',
         'email.unique' => 'هذا البريد مسجل من قبل',
+        'code.unique' => 'هذا الكود مسجل من قبل',
         'password.required' => 'من فضلك ادخل كلمه سر ',
         'password.min' => 'عفوا كلمه السر يجب ان تكون 8 ارقام واحرف'
     ];
@@ -46,8 +50,10 @@ class AddStudents extends Component
 
     public function store(){
         try{
+            $this->validate();
             User::create([
                 'name'=>$this->name,
+                'code'=>$this->code,
                 'phone'=>$this->phone,
                 'address'=>$this->address,
                 'semester'=>$this->semester,
@@ -65,6 +71,7 @@ class AddStudents extends Component
             session()->flash('success','تم اضافة الطالب بنجاح ');
 
             $this->name='';
+            $this->code='';
             $this->phone='';
             $this->address='';
             $this->semester='';

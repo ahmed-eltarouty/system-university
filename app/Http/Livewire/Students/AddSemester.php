@@ -2,9 +2,11 @@
 
 namespace App\Http\Livewire\Students;
 
+use App\Models\Notification;
 use App\Models\Semester;
 use App\Models\Settings;
 use App\Models\Subject;
+use App\Models\SubjectCategory;
 use App\Models\UserCategory;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
@@ -33,6 +35,10 @@ class AddSemester extends Component
 
     public $current_subject;
 
+    public $pass_minimum_hours;
+    public $specialization_categories;
+    public $specialization_cat_id;
+
 
 
 
@@ -40,13 +46,32 @@ class AddSemester extends Component
         $this->settingss = Settings::first();
         $this->user = Auth::user();
 
-        // check for the semester type and summer or normal
-        $this->create_semster();
+        if($this->settingss->semester_register == 0){
 
-        // get the current semester subjects to show on the view
-        $this->bindSelectedSubjects();
+            $this->render();
+        }else{
+
+            // check for the semester type and summer or normal
+            $this->create_semster();
 
 
+            // get the current semester subjects to show on the view
+            $this->bindSelectedSubjects();
+        }
+
+        $semo = Semester::where('semester_status',1)->with('subjects')->get();
+        $kick = [];
+        foreach($semo as $semester){
+            foreach($semester->subjects as $subject){
+                if ($subject->subject_id == 2){
+                    $kick[$semester->user_id] = $subject->id;
+                }
+            }
+        }
+        // dd($semo->toArray());
+        $this->check_min_hours();
+
+        $this->specialization_categories = SubjectCategory::where('specialization',1)->get();
     }
 
 
@@ -55,23 +80,64 @@ class AddSemester extends Component
         $this->current_semester = Semester::find($this->semester_id);
 
         $this->user = Auth::user();
-        // dd($this->current_semester);
-        // get the time avalivable to register
-        // $this->total_can_register =   ( $this->current_semester->semester_hours - $this->current_semester->semester_hours_registered > 0) ? $this->current_semester->semester_hours - $this->current_semester->semester_hours_registered : 0;
 
-        // get the current semester subjects to show on the view
-        $this->bindSelectedSubjects();
 
-        $this->total_can_register =$this->current_semester->semester_hours - $this->current_semester->semester_hours_registered;
+        if($this->settingss->semester_register == 1){
+
+            // get the current semester subjects to show on the view
+            $this->bindSelectedSubjects();
+            // $this->total_can_register =$this->current_semester->semester_hours - $this->current_semester->semester_hours_registered;
+        }else{
+            $this->render();
+        }
+
+        $this->check_min_hours();
     }
+
+    public function updated(){
+        $this->bindSelectedSubjects();
+    }
+
+    public function check_min_hours(){
+        if($this->current_semester != null){
+            if($this->settingss->semester_type == 0 ){
+                $this->current_semester->semester_hours_registered != null && $this->current_semester->semester_hours_registered  >= $this->settingss->min_hours ?
+                $this->pass_minimum_hours = 1 : $this->pass_minimum_hours = 0 ;
+            }elseif($this->settingss->semester_type == 1 ){
+                $this->current_semester->semester_hours_registered != null && $this->current_semester->semester_hours_registered >= $this->settingss->min_hours_summer ?
+                $this->pass_minimum_hours = 1 : $this->pass_minimum_hours = 0 ;
+            }
+        }
+    }
+
+    public function saveSpecializtion(){
+        if(!$this->specialization_cat_id ){
+            session()->flash('error','عفواً لتتمكن من تسجيل ترم جديد يجب اختيار تخصص');
+        }else{
+            $this->user->update([
+                'specialization_id' =>$this->specialization_cat_id
+            ]);
+            session()->flash('success','تم التسجيل بنجاح');
+        }
+
+    }
+
 
     // create the semester or get the current semester hours
     public function getCurrentSemesterHours(){
 
         if($this->settingss->semester_register == 1 && $this->settingss->semester_type == 0){
-            if($this->user->semester == null || $this->user->CGPA >= 2){
-                // dd($this->user);
+            if($this->user->semester == null){
+                // case of new steudent
                 $this->setting_hours = $this->settingss->max_hours_CGPA_greater_2;
+            }
+            elseif($this->user->CGPA >=2 ){
+                // case of emergency graduate
+                if($this->settingss->graduate_hours - $this->user->total_finished_hours <= $this->settingss->max_hours_CGPA_greater_2 + 3){
+                    $this->setting_hours = $this->settingss->max_hours_CGPA_greater_2 + 3;
+                }else{
+                    $this->setting_hours = $this->settingss->max_hours_CGPA_greater_2;
+                }
             }
             elseif($this->user->CGPA < 2 && $this->user->CGPA >= 1){
                 $this->setting_hours = $this->settingss->max_hours_CGPA_less_2_greater_1;
@@ -81,7 +147,11 @@ class AddSemester extends Component
             }
         }
         elseif($this->settingss->semester_register == 1 && $this->settingss->semester_type == 1){
-            $this->setting_hours = $this->settingss->max_hours_summer;
+                if($this->settingss->graduate_hours - $this->user->total_finished_hours <= $this->settingss->max_hours_summer + 3){
+                    $this->setting_hours = $this->settingss->max_hours_summer + 3;
+                }else{
+                    $this->setting_hours = $this->settingss->max_hours_summer;
+                }
         }
         elseif($this->settingss->semester_register == 0){
             $this->stop_register = 0;
@@ -99,13 +169,17 @@ class AddSemester extends Component
             $this->selected_subjects = Semester::find($this->semester_id)->subjects()->select('subject_id')->get();
 
             // get all the subjects that student studied in any semester
-            $semesters_subjects=$this->user->semesters()->with('subjects')->get()->toArray();
+            $semesters_subjects=$this->user->semesters()->where('semester_status',0)->with('subjects')->get()->toArray();
             foreach($semesters_subjects as $semester_subject){
                 foreach($semester_subject['subjects'] as $subject){
                     $this->studied_subjects[]=$subject['subject_id'];
                 }
             }
+            // dd($this->studied_subjects);
         }
+        $this->total_can_register =$this->current_semester->semester_hours - $this->current_semester->semester_hours_registered;
+        $this->check_min_hours();
+
     }
 
    // semester type 1:summer 0:normal   semester_status 1:active 0:inactive
@@ -124,6 +198,7 @@ class AddSemester extends Component
             ]);
         }else{
             //get the active semester
+
             $data=$this->user->semesters()->where('semester_status', 1)->first()->created_at;
             $current_date = Carbon::now();
             //check days between current date and semester created date
@@ -149,8 +224,24 @@ class AddSemester extends Component
             }else{
                 $this->current_semester = $this->user->semesters()->where('semester_status', 1)->first();
                 $this->semester_id =$this->current_semester->id;
-                // $this->semester_id = $this->user->semesters()->where('semester_status', 1)->first()->id;
+
                 $this->total_can_register = $this->current_semester->semester_hours - $this->current_semester->semester_hours_registered;
+                if($this->current_semester->semester_type == 0  && $this->current_semester->semester_hours_registered < $this->settingss->min_hours){
+                    Notification::create([
+                        'user_id' => $this->user->id,
+                        'type' => 0,
+                        'status' => 1,
+                        'content' => 'عفوا تم انتهاء التسجيل ولم تقم باستكمال الحد الادنى يرجى التوجه لشئون الطلاب وعمل طلب لاستكمال التسجيل'
+                    ]);
+
+                }elseif($this->current_semester->semester_type == 1  && $this->current_semester->semester_hours_registered < $this->settingss->min_hours_summer){
+                    Notification::create([
+                        'user_id' => $this->user->id,
+                        'type' => 0,
+                        'status' => 1,
+                        'content' => 'عفوا تم انتهاء التسجيل ولم تقم باستكمال الحد الادنى يرجى التوجه لشئون الطلاب وعمل طلب لاستكمال التسجيل'
+                    ]);
+                }
             }
         }
     }
@@ -160,7 +251,7 @@ class AddSemester extends Component
 
         if(($this->total_can_register - $this->current_subject->study_hours) >= 0){ //check available hours
             $subject=Subject::find($sub);
-            $subject_category =  $subject->category->toArray(); // get the subject local variable
+            $subject_category =  isset($subject->category) ? $subject->category->toArray() : null; // get the subject local variable
             // dd($subject_category['M_hours']);
 
             if($this->user->category->contains('id',$subject_category['id'])){ // check if the subject category added to the user category before or not
@@ -337,7 +428,7 @@ class AddSemester extends Component
         // check Hours or subject1 + subject2 are required not null before add it to the list
         elseif(($this->current_subject->finished_subject_id_1 != null || $this->current_subject->finished_subject_id_2 != null)){
             // check if the student finished the first subject
-            if(($this->user->total_finished_hours >= $this->current_subject->required_hours || in_array($this->current_subject->finished_subject_id_1, $this->studied_subjects))){
+            if(($this->user->total_finished_hours >= $this->current_subject->required_hours && in_array($this->current_subject->finished_subject_id_1, $this->studied_subjects))){
                 $this->add_after_check($sub); // add the subject to the list
             }
             else{
@@ -416,20 +507,20 @@ class AddSemester extends Component
 
         // update the hours avalable
         $this->total_can_register =$this->current_semester->semester_hours - $this->current_semester->semester_hours_registered;
+        $this->check_min_hours();
 
     }
 
 
     public function render()
     {
-        if($this->stop_register === 0){
-            return view('livewire.components.noregister')->layout('livewire.layouts.admin');
-        }
-        $searchSection = '%'. $this->search . '%';
-        $subjects = Subject::where('name','like',$searchSection)
-            ->orWhere('code','like',$searchSection)
-            ->paginate($this->count);
 
-        return view('livewire.students.add-semester',['subjects'=>$subjects,'selected_subjects'=>$this->selected_subjects])->layout('livewire.layouts.admin');
+        if($this->settingss->semester_register == 0){
+            return view('livewire.components.noregister',['message'=>'عفواً التسجيل مغلق حالياُ'])->layout('livewire.layouts.admin');
+        }
+
+        $specialization_subjects = SubjectCategory::where('specialization',0)->orWhere('id',$this->user->specialization_id)->with('subjects')->get();
+
+        return view('livewire.students.add-semester',['spec_cats'=>$this->specialization_categories,'specialization_subjects'=>$specialization_subjects,'selected_subjects'=>$this->selected_subjects])->layout('livewire.layouts.admin');
     }
 }

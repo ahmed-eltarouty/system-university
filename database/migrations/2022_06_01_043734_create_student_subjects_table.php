@@ -18,6 +18,8 @@ return new class extends Migration
             $table->foreignId('semester_id')->constrained('semesters')->onDelete('cascade');
             $table->integer('subject_id');
             $table->float('subject_hours');
+            $table->float('subject_points')->nullable();
+            $table->float('total_subject_points')->nullable();
             $table->timestamps();
         });
     }

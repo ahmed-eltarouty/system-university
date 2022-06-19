@@ -11,6 +11,7 @@ class EditInfo extends Component
 {
     public $student;
     public $name;
+    public $code;
     public $phone;
     public $address;
     public $semester;
@@ -24,12 +25,15 @@ class EditInfo extends Component
     public $email;
     public $password;
 
+    public $specialization;
+
 
     public function mount(){
 
         try{
             $this->student = User::findOrFail(Auth::user()->id);
             $this->name=$this->student->name;
+            $this->code=$this->student->code;
             $this->phone=$this->student->phone;
             $this->address=$this->student->address;
             $this->semester=$this->student->semester;
@@ -72,6 +76,7 @@ class EditInfo extends Component
             User::where('id',$this->student->id)
                 ->update([
                 'name'=>$this->name,
+                'code'=>$this->code,
                 'phone'=>$this->phone,
                 'address'=>$this->address,
                 'semester'=>$this->semester,

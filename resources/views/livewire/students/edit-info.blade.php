@@ -50,6 +50,13 @@
 
                                                 <div class="col-md-6">
                                                     <div class="form-group">
+                                                        <label for="projectinput1"> كود الطالب </label>
+                                                        <h3>{{$student->code}}</h3>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
                                                         <label for="projectinput1"> سنة الإنضمام </label>
                                                         <h3>{{$student->year_enrolled}}</h3>
                                                     </div>
@@ -180,6 +187,7 @@
                 </div>
             </section>
             <!-- // Basic form layout section end -->
+
         </div>
     </div>
 </div>

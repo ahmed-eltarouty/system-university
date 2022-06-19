@@ -46,7 +46,7 @@
                                     <div class="ml-5 col-2 col-md-1">
                                         <div class="form-group">
                                             <label for="projectinput2"> العدد </label>
-                                            <select name="count" wire:model="count" class="select2 form-control">
+                                            <select name="count" wire:model="count" class="form-control">
                                                 <optgroup label="اختر العدد ">
                                                         <option value="10">10</option>
                                                         <option value="20">20</option>
@@ -75,10 +75,9 @@
                                             <th> اسم التخصص</th>
                                             <th>الكود</th>
                                             <th>عدد الساعات الكلى</th>
-                                            <th> عدد الساعات الأدنى</th>
-                                            <th> عدد الساعات الأقصى</th>
                                             <th>الساعات الاجبارية</th>
                                             <th>الساعات الاختيارية</th>
+                                            <th>نوع التخصص</th>
                                             <th>الحالة</th>
                                             <th></th>
                                         </tr>
@@ -90,10 +89,9 @@
                                                     <td>{{$category -> name}}</td>
                                                     <td>{{$category -> code}}</td>
                                                     <td>{{$category -> total_hours}}</td>
-                                                    <td>{{$category -> min_hours}}</td>
-                                                    <td>{{$category -> max_hours}}</td>
                                                     <td>{{$category -> M_hours}}</td>
                                                     <td>{{$category -> E_hours}}</td>
+                                                    <td>{{$category -> specialization ? 'تخصصى':'اساسى'}}</td>
                                                     <td>{{$category -> status ? 'مفعل':'غير مفعل'}}</td>
                                                     <td>
                                                         <div class="btn-group" role="group"

@@ -45,7 +45,7 @@
                                         <div class="ml-5 col-2 col-md-1">
                                             <div class="form-group">
                                                 <label for="projectinput2"> العدد </label>
-                                                <select name="count" wire:model="count" class="select2 form-control">
+                                                <select name="count" wire:model="count" class="form-control">
                                                     <optgroup label="اختر العدد ">
                                                             <option value="10">10</option>
                                                             <option value="20">20</option>
@@ -73,13 +73,14 @@
                                             <thead>
                                             <tr>
                                                 <th> الاسم</th>
+                                                <th> الكود</th>
                                                 <th>رقم الهاتف</th>
                                                 <th>الترم</th>
                                                 <th>عدد الساعات المسجلة</th>
                                                 <th>GPA</th>
                                                 <th>CGPA</th>
                                                 <th>الحالة</th>
-                                                <th>تظبيق</th>
+                                                <th>تطبيق</th>
                                             </tr>
                                             </thead>
                                             <tbody>
@@ -88,6 +89,7 @@
                                                 @foreach($students as $student)
                                                     <tr>
                                                         <td>{{$student -> name}}</td>
+                                                        <td>{{$student -> code}}</td>
                                                         <td>{{$student -> phone}}</td>
                                                         <td>{{$student -> semester}}</td>
                                                         <td>{{$student -> total_registered_hours}}</td>

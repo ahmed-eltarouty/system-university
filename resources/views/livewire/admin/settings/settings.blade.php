@@ -140,12 +140,38 @@
 
                                                     <div class="col-md-6">
                                                         <div class="form-group">
-                                                            <label for="projectinput1">عدد ساعات الترم الصيفى</label>
+                                                            <label for="projectinput1">عدد الساعات الاضافية لدواعى التخرج</label>
+                                                            <input type="number" value="" id="emergency_graduate_hours"
+                                                                class="form-control"
+                                                                placeholder="عدد الساعات الاضافية لدواعى التخرج"
+                                                                name="emergency_graduate_hours" wire:model='emergency_graduate_hours'>
+                                                            @error('emergency_graduate_hours')
+                                                            <span class="text-danger">{{$message}}</span>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="projectinput1">عدد ساعات الأقصى للترم الصيفى</label>
                                                             <input type="number" value="" id="max_hours_summer"
                                                                 class="form-control"
                                                                 placeholder=" عدد ساعات الترم الصيفى "
                                                                 name="max_hours_summer" wire:model='max_hours_summer'>
                                                             @error('max_hours_summer')
+                                                            <span class="text-danger">{{$message}}</span>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="projectinput1">عدد ساعات الأأقل للترم الصيفى</label>
+                                                            <input type="number" value="" id="min_hours_summer"
+                                                                class="form-control"
+                                                                placeholder=" عدد ساعات الترم الصيفى "
+                                                                name="min_hours_summer" wire:model='min_hours_summer'>
+                                                            @error('min_hours_summer')
                                                             <span class="text-danger">{{$message}}</span>
                                                             @enderror
                                                         </div>

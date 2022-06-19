@@ -187,19 +187,6 @@
                                                     </div>
                                                 </div>
 
-                                                {{-- <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label for="projectinput1"> سنة الإنضمام </label>
-                                                        <input type="text" value="" id="phone"
-                                                               class="form-control"
-                                                               placeholder="سنة الإنضمام  "
-                                                               name="current_team_id">
-                                                        @error('current_team_id')
-                                                        <span class="text-danger">{{$message}} </span>
-                                                        @enderror
-                                                    </div>
-                                                </div> --}}
-
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label for="projectinput2"> المشرف </label>
@@ -250,11 +237,133 @@
                                     </form>
                                 </div>
                             </div>
+                            <div class="card-content collapse show">
+                                <div class="card-body">
+                                    <div class="form-body">
+                                        <h4 class="form-section"><i class="las la-user-graduate"></i>إرسال اشعار للطالب </h4>
+                                        <hr class="mb-3">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="projectinput2"> ادخل الاشعار </label>
+                                                    <input type="text"  id="noti" value="{{$noti}}"
+                                                            class="form-control"
+                                                            placeholder="ادخل نص الاشعار "
+                                                            name="noti" wire:model='noti'>
+                                                    @error('noti')
+                                                    <span class="text-danger">{{$message}}</span>
+                                                    @enderror
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label for="projectinput2"> نوع الاشعار </label>
+                                                    <select name="noti_status" wire:model="noti_status"  class="form-control">
+                                                        <optgroup label="نوع الاشعار ">
+                                                            <option value="1">تحذير</option>
+                                                            <option value="0">اشعار</option>
+                                                        </optgroup>
+                                                    </select>
+                                                    @error('noti_status')
+                                                    <span class="text-danger">{{$message}}</span>
+                                                    @enderror
+                                                </div>
+                                            </div>
+
+                                            <div class="form-actions mt-2">
+                                                <button type="button" class="btn btn-primary" wire:click='sendNotification'>
+                                                    <i class="la la-check-square-o"></i> ارسال
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </section>
             <!-- // Basic form layout section end -->
+            <!-- // Start last Semesters section -->
+
+            <div class="card-content collapse show bg-white">
+                <div class="card-body card-dashboard table-responsive">
+
+                        @if($student->semesters->count() > 0 && \App\Models\Semester::where('user_id',$student->id)->with('subjects')->get()->count() > 0)
+                            @foreach(\App\Models\Semester::where('user_id',$student->id)->with('subjects')->orderBy('id','desc')->get() as $semester)
+                                <div class="d-flex">
+                                    <h3 class="mx-5 my-2 "> تاريخ تسجيل الترم : {{$semester->created_at->format('Y-m-d')}}</h3>
+                                    <h3 class="mx-5 my-2"> GPA : {{$semester->GPA ? $semester->GPA : 'لم يتم احتسابه بعد'}}</h3>
+                                </div>
+                                <table class="table display nowrap {{$semester->semester_status ? 'table-light' : ''}} table-striped table-hover table-bordered mb-5" id="studentstable">
+                                    <thead>
+                                    <tr>
+                                        <th> المادة</th>
+                                        <th> الساعات</th>
+                                        <th>النقاط</th>
+                                        <th>مجموع النقاط</th>
+                                        <th>الاجرائات</th>
+
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach($semester->subjects as $subject)
+                                        {{-- {{dd($subject)}} --}}
+                                            <tr>
+                                                <td>{{\App\Models\Subject::find($subject->subject_id)->name}}</td>
+                                                <td>{{$subject -> subject_hours}}</td>
+                                                <td>{{$subject -> subject_points}}</td>
+                                                <td>{{$subject -> total_subject_points}}</td>
+                                                <td>
+                                                    <div class="btn-group" role="group"  aria-label="Basic example">
+                                                        <button type="button" wire:click="declareRuesultVariables({{ $subject }})" class="btn btn-outline-info btn-min-width box-shadow-3 mr-1 mb-1" data-toggle="modal" data-target="#exampleModal">تعديل</button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            @endforeach
+                        @endif
+
+
+
+                    <div class="justify-content-center d-flex">
+                        {{-- ============================================================================ --}}
+
+                        <div wire:ignore.self class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">ادخل قيمة النقاط</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true close-btn">×</span>
+                                        </button>
+                                    </div>
+                                    <div class="mx-5 my-2">
+                                        <label for="inputPoints">النقاط</label>
+                                        <input type="number" step=0.01 wire:model="editResultPoints" class="form-control" id="inputPoints" placeholder="ادخل قيمة النقاط">
+                                    </div>
+                                    <div class="modal-body text-center">
+                                        <p>تأكيد الحفظ ؟</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-danger close-btn" data-dismiss="modal">اغلاق</button>
+                                        <button type="button" wire:click.prevent="updateResult({{$editResultPoints}})" class="btn btn-info close-modal" data-dismiss="modal">نعم , قم بالحفظ</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {{-- ============================================================================ --}}
+
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- // End last Semesters section -->
+
         </div>
     </div>
 </div>

@@ -15,6 +15,7 @@ class Semester extends Model
         'semester_status',
         'user_id',
         'semester_hours_registered',
+        'GPA',
     ];
 
     public function users(){

@@ -20,6 +20,7 @@ return new class extends Migration
             $table->float('semester_hours')->nullable();
             $table->float('semester_hours_registered')->nullable();
             $table->boolean('semester_status');  // 1:active 0:inactive
+            $table->float('GPA')->nullable();
             $table->timestamps();
         });
     }

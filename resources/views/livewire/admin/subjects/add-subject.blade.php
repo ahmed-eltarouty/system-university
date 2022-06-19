@@ -186,7 +186,7 @@
                                                         <label for="projectinput1"> تخصص المادة </label>
                                                         <select name="category_id" wire:model="category_id" class="form-control">
                                                             <optgroup label="من فضلك أختر المادة ">
-                                                                <option value="">لا يوجد</option>
+
                                                                 @foreach ($categories as $category)
                                                                     <option value="{{$category->id}}">{{$category->name}}</option>
                                                                 @endforeach

@@ -25,8 +25,10 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'code',
         'phone',
         'address',
+        'specialization_id',
         'semester',
         'year_enrolled',
         'total_registered_hours',
@@ -84,6 +86,10 @@ class User extends Authenticatable
     public function category(){
 
         return $this->belongsToMany('App\Models\SubjectCategory', 'user_categories', 'user_id', 'category_id');
+    }
+
+    public function notifications(){
+        return $this->hasMany('App\Models\Notification','user_id','id');
     }
 
 }

@@ -46,7 +46,7 @@
                                     <div class="ml-5 col-2 col-md-1">
                                         <div class="form-group">
                                             <label for="projectinput2"> العدد </label>
-                                            <select name="count" wire:model="count" class="select2 form-control">
+                                            <select name="count" wire:model="count" class="form-control">
                                                 <optgroup label="اختر العدد ">
                                                         <option value="10">10</option>
                                                         <option value="20">20</option>

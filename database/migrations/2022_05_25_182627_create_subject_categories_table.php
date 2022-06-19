@@ -18,10 +18,9 @@ return new class extends Migration
             $table->string('name');
             $table->string('code')->nullable();
             $table->float('total_hours')->nullable();   // total hours of this category
-            $table->float('min_hours')->nullable();     // min hours to pass this category
-            $table->float('max_hours')->nullable();  // max hours for a subject category
             $table->float('M_hours')->nullable();   // Must hours
             $table->float('E_hours')->nullable();   // optional hours
+            $table->boolean('specialization')->default(1); // 0 basic  1 other specialization Ai , SC, CS, Is
             $table->boolean('status')->default(1);
             $table->timestamps();
         });

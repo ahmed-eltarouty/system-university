@@ -32,7 +32,7 @@ class AddSubject extends Component
         'GPA'=>'numeric|nullable',
         'finished_subject1'=>'numeric|nullable',
         'finished_subject2'=>'numeric|nullable',
-        'category_id'=>'numeric',
+        'category_id'=>'required|numeric',
     ];
 
 

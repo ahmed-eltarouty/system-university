@@ -15,7 +15,9 @@ class Settings extends Component
     public $max_hours_CGPA_greater_2;
     public $max_hours_CGPA_less_2_greater_1;
     public $max_hours_CGPA_less_1;
+    public $emergency_graduate_hours;
     public $max_hours_summer;
+    public $min_hours_summer;
     public $period_of_editing_registered_semester;
 
 
@@ -30,7 +32,9 @@ class Settings extends Component
             $this->max_hours_CGPA_greater_2=$settings->max_hours_CGPA_greater_2;
             $this->max_hours_CGPA_less_2_greater_1=$settings->max_hours_CGPA_less_2_greater_1;
             $this->max_hours_CGPA_less_1=$settings->max_hours_CGPA_less_1;
+            $this->emergency_graduate_hours=$settings->emergency_graduate_hours;
             $this->max_hours_summer=$settings->max_hours_summer;
+            $this->min_hours_summer=$settings->min_hours_summer;
             $this->period_of_editing_registered_semester=$settings->period_of_editing_registered_semester;
 
         }catch(\Exception $e){
@@ -44,7 +48,9 @@ class Settings extends Component
         'max_hours_CGPA_greater_2'=>'nullable|numeric',
         'max_hours_CGPA_less_2_greater_1'=>'nullable|numeric',
         'max_hours_CGPA_less_1'=>'nullable|numeric',
+        'emergency_graduate_hours'=>'nullable|numeric',
         'max_hours_summer'=>'nullable|numeric',
+        'min_hours_summer'=>'nullable|numeric',
         'period_of_editing_registered_semester'=>'nullable|numeric',
     ];
 
@@ -53,17 +59,6 @@ class Settings extends Component
     }
 
     public function store(){
-        //         dd([
-        //     $this->semester_register,
-        //     $this->semester_type,
-        //     $this->graduate_hours,
-        //     $this->min_hours,
-        //     $this->max_hours_CGPA_greater_2,
-        //     $this->max_hours_CGPA_less_2_greater_1,
-        //     $this->max_hours_CGPA_less_1,
-        //     $this->max_hours_summer,
-        //     $this->period_of_editing_registered_semester,
-        // ]);
         try{
             ModelsSettings::updateOrCreate(
                 ['id'=>1],
@@ -75,7 +70,9 @@ class Settings extends Component
                     'max_hours_CGPA_greater_2'=>$this->max_hours_CGPA_greater_2,
                     'max_hours_CGPA_less_2_greater_1'=>$this->max_hours_CGPA_less_2_greater_1,
                     'max_hours_CGPA_less_1'=>$this->max_hours_CGPA_less_1,
+                    'emergency_graduate_hours'=>$this->emergency_graduate_hours,
                     'max_hours_summer'=>$this->max_hours_summer,
+                    'min_hours_summer'=>$this->min_hours_summer,
                     'period_of_editing_registered_semester'=>$this->period_of_editing_registered_semester,
                 ]
             );

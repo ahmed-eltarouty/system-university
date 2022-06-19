@@ -12,10 +12,9 @@ class EditSubjectCategory extends Component
     public $name;
     public $code;
     public $total_hours;
-    public $min_hours;
-    public $max_hours;
     public $M_hours;
     public $E_hours;
+    public $specialization;
     public $status;
 
     public function mount($id){
@@ -24,10 +23,9 @@ class EditSubjectCategory extends Component
             $this->name=$this->catogory->name;
             $this->code=$this->catogory->code;
             $this->total_hours=$this->catogory->total_hours;
-            $this->min_hours=$this->catogory->min_hours;
-            $this->max_hours=$this->catogory->max_hours;
             $this->M_hours=$this->catogory->M_hours;
             $this->E_hours=$this->catogory->E_hours;
+            $this->specialization=$this->catogory->specialization;
             $this->status=$this->catogory->status;
 
 
@@ -53,24 +51,23 @@ class EditSubjectCategory extends Component
         $this->name=null;
         $this->code=null;
         $this->total_hours=null;
-        $this->min_hours=null;
-        $this->max_hours=null;
         $this->M_hours=null;
         $this->E_hours=null;
+        $this->specialization=1;
         $this->status=1;
     }
 
 
     public function store(){
+        // dd($this->specialization);
         try{
             SubjectCategory::where('id',$this->catogory->id)->update([
                 'name'=>$this->name,
                 'code'=>$this->code,
                 'total_hours'=>$this->total_hours,
-                'min_hours'=>$this->min_hours,
-                'max_hours'=>$this->max_hours,
                 'M_hours'=>$this->M_hours,
                 'E_hours'=>$this->E_hours,
+                'specialization'=>($this->specialization ? $this->specialization : 0),
                 'status'=>($this->status ? $this->status : 0),
             ]);
             session()->flash('success','تم تعديل التخصص بنجاح');

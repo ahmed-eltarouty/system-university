@@ -15,5 +15,7 @@ class Student_Subject extends Model
         'semester_id',
         'subject_id',
         'subject_hours',
+        'subject_points',
+        'total_subject_points',
     ];
 }

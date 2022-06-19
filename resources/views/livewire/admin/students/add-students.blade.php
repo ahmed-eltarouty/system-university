@@ -42,6 +42,7 @@
                                                 <h4 class="form-section"><i class="las la-user-graduate"></i> بيانات  الطالب </h4>
 
                                                 <div class="row">
+
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label for="projectinput1"> اسم الطالب </label>
@@ -50,6 +51,19 @@
                                                                    placeholder="ادخل اسم الطالب  "
                                                                    name="name" wire:model='name'>
                                                             @error('name')
+                                                            <span class="text-danger">{{$message}}</span>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="projectinput1"> كود الطالب </label>
+                                                            <input type="text" value="" id="code"
+                                                                   class="form-control"
+                                                                   placeholder="ادخل كود الطالب  "
+                                                                   name="code" wire:model='code'>
+                                                            @error('code')
                                                             <span class="text-danger">{{$message}}</span>
                                                             @enderror
                                                         </div>
@@ -140,7 +154,7 @@
                                                             <label for="projectinput1"> GPA </label>
                                                             <input type="text" value="" id="GPA"
                                                                    class="form-control"
-                                                                   placeholder="سنة الإنضمام  "
+                                                                   placeholder="GPA  "
                                                                    name="GPA" wire:model='GPA'>
                                                             @error('GPA')
                                                             <span class="text-danger">{{$message}} </span>
@@ -153,7 +167,7 @@
                                                             <label for="projectinput1"> CGPA </label>
                                                             <input type="text" value="" id="CGPA"
                                                                    class="form-control"
-                                                                   placeholder="سنة الإنضمام  "
+                                                                   placeholder="CGPA  "
                                                                    name="CGPA" wire:model='CGPA'>
                                                             @error('CGPA')
                                                             <span class="text-danger">{{$message}} </span>
@@ -187,18 +201,6 @@
                                                         </div>
                                                     </div>
 
-                                                    {{-- <div class="col-md-6">
-                                                        <div class="form-group">
-                                                            <label for="projectinput1"> سنة الإنضمام </label>
-                                                            <input type="text" value="" id="phone"
-                                                                   class="form-control"
-                                                                   placeholder="سنة الإنضمام  "
-                                                                   name="current_team_id">
-                                                            @error('current_team_id')
-                                                            <span class="text-danger">{{$message}} </span>
-                                                            @enderror
-                                                        </div>
-                                                    </div> --}}
 
                                                     <div class="col-md-6">
                                                         <div class="form-group">

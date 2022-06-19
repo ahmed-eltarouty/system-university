@@ -84,32 +84,6 @@
 
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label for="projectinput1"> عدد الساعات الأدنى للتخصص </label>
-                                                        <input type="number" step=0.01 value="" id="hours"
-                                                               class="form-control"
-                                                               placeholder="عدد ساعات الأدنى للتخصص  "
-                                                               name="min_hours" wire:model='min_hours'>
-                                                        @error('min_hours')
-                                                        <span class="text-danger">{{$message}} </span>
-                                                        @enderror
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label for="projectinput1"> عدد الساعات الأكثر للتخصص </label>
-                                                        <input type="number" step=0.01 value="" id="hours"
-                                                               class="form-control"
-                                                               placeholder="عدد ساعات الأكثر للتخصص  "
-                                                               name="max_hours" wire:model='max_hours'>
-                                                        @error('max_hours')
-                                                        <span class="text-danger">{{$message}} </span>
-                                                        @enderror
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
                                                         <label for="projectinput1"> عدد الساعات الإلزامية للتخصص </label>
                                                         <input type="number" step=0.01 value="" id="hours"
                                                                class="form-control"
@@ -133,7 +107,22 @@
                                                         @enderror
                                                     </div>
                                                 </div>
+
+                                                <div class="col-md-6">
+                                                <div class="form-group" wire:ignore>
+                                                    <label for="specialization"> نوع التخصص </label>
+                                                    <select name="specialization" wire:model="specialization" id="specialization" class="form-control">
+                                                        <optgroup label="من فضلك أختر التخصص ">
+                                                            <option value="1">تخصصى</option>
+                                                            <option value="0">أساسى</option>
+                                                        </optgroup>
+                                                    </select>
+                                                    @error('specialization')
+                                                    <span class="text-danger">{{$message}}</span>
+                                                    @enderror
+                                                </div>
                                             </div>
+                                        </div>
 
                                             <div class="row">
                                                 <div class="col-md-6">

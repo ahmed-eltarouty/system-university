@@ -14,7 +14,6 @@ class ShowStudents extends Component
 
     protected $paginationTheme = 'bootstrap';
 
-
     use WithPagination;
     public function render()
     {
@@ -23,6 +22,7 @@ class ShowStudents extends Component
             ->orWhere('email','like',$searchSection)
             ->orWhere('phone','like',$searchSection)
             ->orWhere('semester','like',$searchSection)
+            ->orWhere('code','like',$searchSection)
             ->orderBy('id','desc')
             ->paginate($this->count);
         return view('livewire.admin.students.show-students',['students'=>$students])->layout('livewire.layouts.admin');

@@ -85,7 +85,7 @@ class EditSubject extends Component
                 'max_degree'=>$this->max,
                 'min_degree'=>$this->min,
                 'total_students_can_register'=>$this->students_number,
-                'GPA_Greater_Than'=>$this->GPA,
+                'GPA_Greater_Than'=>$this->GPA ? $this->GPA : null,
                 'finished_subject_id_1'=>$this->finished_subject1 ? $this->finished_subject1 : null,
                 'finished_subject_id_2'=>$this->finished_subject2 ? $this->finished_subject2 : null,
                 'required_hours'=>$this->required_hours,

@@ -17,9 +17,11 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('code')->unique();
             $table->string('phone')->nullable();
             $table->string('address')->nullable();
             $table->integer('semester')->nullable();
+            $table->integer('specialization_id')->nullable();
             $table->year('year_enrolled')->nullable();
             $table->integer('total_registered_hours')->nullable();
             $table->integer('total_finished_hours')->nullable();

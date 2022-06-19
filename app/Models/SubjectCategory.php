@@ -12,6 +12,10 @@ class SubjectCategory extends Model
     protected $table = 'subject_categories';
 
     protected $fillable = [
-        'name', 'code', 'total_hours', 'min_hours', 'max_hours', 'M_hours', 'E_hours', 'status'
+        'name', 'code', 'total_hours', 'specialization', 'M_hours', 'E_hours', 'status'
     ];
+
+    public function subjects(){
+        return $this->hasMany('App\Models\Subject','category_id','id');
+    }
 }

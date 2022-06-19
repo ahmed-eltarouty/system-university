@@ -1,8 +1,6 @@
 
   <div class="app-content content">
     <div class="content-wrapper">
-      <div class="content-header row">
-      </div>
       <div class="content-body">
         <div id="crypto-stats-3" class="row">
           <div class="col-xl-4 col-12">
@@ -112,9 +110,11 @@
                       </tr>
                     </thead>
                     <tbody>
+
                         @foreach(DB::table('user_categories')->where('user_id',$user->id)->get() as $category)
+
                           <tr>
-                            <td>{{\App\Models\SubjectCategory::find($category->category_id)->first()->name}}</td>
+                            <td>{{\App\Models\SubjectCategory::find($category->category_id)->name}}</td>
                             <td>{{$category->M_hours}}</td>
                             <td>{{$category->E_hours}}</td>
                           </tr>
@@ -186,6 +186,13 @@
                                 </div>
                               </div>
 
+                              <div class="form-group row">
+                                <label class="col-md-4 col-form-label" for="btc-limit-buy-total">كود الطالب </label>
+                                <div class="col-md-8">
+                                    <h4 class="text-right">{{$user->code}}</h4>
+                                </div>
+                              </div>
+
                             </div>
                           </form>
                         </div>
@@ -239,6 +246,39 @@
               </div>
             </div>
           </div>
+        </div>
+        <div class="card-content collapse show bg-white">
+            <div class="card-body card-dashboard table-responsive">
+
+                    @if($user->semesters->count() > 0 && \App\Models\Semester::where('user_id',$user->id)->with('subjects')->get()->count() > 0)
+                        @foreach(\App\Models\Semester::where('user_id',$user->id)->with('subjects')->orderBy('id','desc')->get() as $semester)
+                            <div class="d-flex">
+                                <h3 class="mx-5 my-2 "> تاريخ تسجيل الترم : {{$semester->created_at->format('Y-m-d')}}</h3>
+                                <h3 class="mx-5 my-2"> GPA : {{$semester->GPA ? $semester->GPA : 'لم يتم احتسابه بعد'}}</h3>
+                            </div>
+                            <table class="table display nowrap {{$semester->semester_status ? 'table-light' : ''}} table-striped table-hover table-bordered mb-5" id="studentstable">
+                                <thead>
+                                <tr>
+                                    <th> المادة</th>
+                                    <th> الساعات</th>
+                                    <th>النقاط</th>
+
+                                </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach($semester->subjects as $subject)
+                                    {{-- {{dd($subject)}} --}}
+                                        <tr>
+                                            <td>{{\App\Models\Subject::find($subject->subject_id)->name}}</td>
+                                            <td>{{$subject -> subject_hours}}</td>
+                                            <td>{{$subject -> subject_points}}</td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        @endforeach
+                    @endif
+            </div>
         </div>
 
       </div>

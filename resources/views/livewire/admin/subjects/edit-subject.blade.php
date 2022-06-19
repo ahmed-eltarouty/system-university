@@ -133,23 +133,6 @@
                                                         @enderror
                                                     </div>
                                                 </div>
-{{--
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label for="projectinput1"> ادخل اسم المادة المشروطه انتهائها قبل اختيار هذه المادة </label>
-                                                        <select name="finished_subject1" wire:model="finished_subject1" class="select2 form-control">
-                                                            <optgroup label="من فضلك أختر المادة ">
-                                                                <option value="">لا يوجد</option>
-                                                                @foreach ($subjects as $subject)
-                                                                    <option value="{{$subject->id}}">{{$subject->name}}</option>
-                                                                @endforeach
-                                                            </optgroup>
-                                                        </select>
-                                                        @error('finished_subject1')
-                                                        <span class="text-danger">{{$message}}</span>
-                                                        @enderror
-                                                    </div>
-                                                </div> --}}
 
                                                 <div class="col-md-6">
                                                     <div class="form-group">
@@ -203,7 +186,7 @@
                                                         <label for="projectinput1"> تخصص المادة </label>
                                                         <select name="category_id" wire:model="category_id" class="form-control">
                                                             <optgroup label="من فضلك أختر المادة ">
-                                                                <option value="">لا يوجد</option>
+
                                                                 @foreach ($categories as $category)
                                                                     <option value="{{$category->id}}">{{$category->name}}</option>
                                                                 @endforeach
