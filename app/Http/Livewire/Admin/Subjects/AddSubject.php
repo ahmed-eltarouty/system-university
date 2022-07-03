@@ -68,6 +68,7 @@ class AddSubject extends Component
     }
 
     public function store(){
+        $this->validate();
         try{
             Subject::create([
                 'name'=>$this->name,

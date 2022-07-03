@@ -102,8 +102,8 @@
                                                     <td>{{$subject -> min_degree}}</td>
                                                     <td>{{$subject -> total_students_can_register}}</td>
                                                     <td>{{$subject -> GPA_Greater_Than}}</td>
-                                                    <td>{{$subject -> finished_subject_id_1 ? (\App\Models\Subject::find($subject->finished_subject_id_1)->name) : ""}}</td>
-                                                    <td>{{$subject -> finished_subject_id_2 ? (\App\Models\Subject::find($subject->finished_subject_id_2)->name) : ""}}</td>
+                                                    <td>{{$subject -> finished_subject_id_1 ? isset((\App\Models\Subject::find($subject->finished_subject_id_1)->name)) ? (\App\Models\Subject::find($subject->finished_subject_id_1)->name) :"" : ""}}</td>
+                                                    <td>{{$subject -> finished_subject_id_2 ? isset((\App\Models\Subject::find($subject->finished_subject_id_2)->name)) ? (\App\Models\Subject::find($subject->finished_subject_id_2)->name) :"" : ""}}</td>
                                                     <td>{{$subject -> required_hours}}</td>
                                                     <td>{{$subject -> category_id ? (\App\Models\SubjectCategory::find($subject->category_id)->name) : ""}}</td>
                                                     <td>{{$subject -> subject_status == 1 ? 'إجبارى' : 'إختيارى'}}</td>

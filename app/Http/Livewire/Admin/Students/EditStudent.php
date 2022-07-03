@@ -18,8 +18,7 @@ class EditStudent extends Component
     public $address;
     public $semester;
     public $year_enrolled;
-    public $max_register_hours;
-    public $min_register_hours;
+    public $total_finished_hours;
     public $supervisor_id;
     public $status;
     public $GPA;
@@ -46,8 +45,7 @@ class EditStudent extends Component
             $this->address=$this->student->address;
             $this->semester=$this->student->semester;
             $this->year_enrolled=$this->student->year_enrolled;
-            $this->max_register_hours=$this->student->max_register_hours;
-            $this->min_register_hours=$this->student->min_register_hours;
+            $this->total_finished_hours=$this->student->total_finished_hours;
             $this->supervisor_id=$this->student->supervisor_id;
             $this->status=$this->student->status;
             $this->GPA=$this->student->GPA;
@@ -94,8 +92,7 @@ class EditStudent extends Component
                 'address'=>$this->address,
                 'semester'=>$this->semester,
                 'year_enrolled'=>$this->year_enrolled,
-                'max_register_hours'=>$this->max_register_hours,
-                'min_register_hours'=>$this->min_register_hours,
+                'total_finished_hours'=>$this->total_finished_hours,
                 'GPA'=>$this->GPA,
                 'CGPA'=>$this->CGPA,
                 'supervisor_id'=>$this->supervisor_id,

@@ -269,9 +269,9 @@
                                     @foreach($semester->subjects as $subject)
                                     {{-- {{dd($subject)}} --}}
                                         <tr>
-                                            <td>{{\App\Models\Subject::find($subject->subject_id)->name}}</td>
-                                            <td>{{$subject -> subject_hours}}</td>
-                                            <td>{{$subject -> subject_points}}</td>
+                                            <td>{{isset(\App\Models\Subject::find($subject->subject_id)->name) ? (\App\Models\Subject::find($subject->subject_id)->name) : "" }}</td>
+                                            <td>{{isset($subject -> subject_hours) ? ($subject -> subject_hours) : ""}}</td>
+                                            <td>{{isset($subject -> subject_points) ? ($subject -> subject_points) : ""}}</td>
                                         </tr>
                                     @endforeach
                                 </tbody>

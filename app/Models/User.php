@@ -32,9 +32,9 @@ class User extends Authenticatable
         'semester',
         'year_enrolled',
         'total_registered_hours',
-        'max_register_hours',
+
         'total_finished_hours',
-        'min_register_hours',
+
         'GPA',
         'CGPA',
         'supervisor_id',
@@ -74,7 +74,7 @@ class User extends Authenticatable
     ];
 
     public function supervisor(){
-        return $this->belongsTo(supervisor::class);
+        return $this->belongsTo(Supervisor::class);
     }
 
     public function semesters(){

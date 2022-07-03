@@ -68,29 +68,31 @@
                                     <span class="grey darken-2">الإشعارات</span>
                                 </h6>
                             </li>
-                            @isset($noti)
-                                @foreach(Auth::user()->notifications()->orderBy('id','desc')->take(5)->get() as $notification)
-                            <li class="scrollable-container media-list w-100">
-                                <a href="{{route('user.notifications')}}">
-                                    <div class="media">
-                                        <div class="media-left align-self-center"><i
-                                            class="ft-plus-square icon-bg-circle bg-cyan"></i></div>
-                                        <div class="media-body">
-                                            <h6 class="media-heading {{$notification->status ? 'text-danger' : 'text-primary'}}">{{$notification->status ? 'تحذير' : 'اشعار'}}</h6>
-                                            <p class="notification-text font-small-3 text-muted">
-                                                {{$notification->content}}
-                                            </p>
-                                            <small>
-                                                <time class="media-meta text-muted"
-                                                      datetime="2015-06-11T18:29:20+08:00">{{ $notification->created_at->diffForHumans(); }}
-                                                </time>
-                                            </small>
+                            @if(Auth::guard('web')->check())
+                                @isset($noti)
+                                    @foreach(Auth::user()->notifications()->orderBy('id','desc')->take(5)->get() as $notification)
+                                <li class="scrollable-container media-list w-100">
+                                    <a href="{{route('user.notifications')}}">
+                                        <div class="media">
+                                            <div class="media-left align-self-center"><i
+                                                class="ft-plus-square icon-bg-circle bg-cyan"></i></div>
+                                            <div class="media-body">
+                                                <h6 class="media-heading {{$notification->status ? 'text-danger' : 'text-primary'}}">{{$notification->status ? 'تحذير' : 'اشعار'}}</h6>
+                                                <p class="notification-text font-small-3 text-muted">
+                                                    {{$notification->content}}
+                                                </p>
+                                                <small>
+                                                    <time class="media-meta text-muted"
+                                                        datetime="2015-06-11T18:29:20+08:00">{{ $notification->created_at->diffForHumans(); }}
+                                                    </time>
+                                                </small>
+                                            </div>
                                         </div>
-                                    </div>
-                                </a>
-                            </li>
-                                @endforeach
-                            @endisset
+                                    </a>
+                                </li>
+                                    @endforeach
+                                @endisset
+                            @endif
                             <li class="dropdown-menu-footer"><a class="dropdown-item text-muted text-center"
                                                                 href="{{route('user.notifications')}}">إقرأ كل الإشعارات</a>
                             </li>

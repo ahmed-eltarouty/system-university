@@ -25,8 +25,7 @@ return new class extends Migration
             $table->year('year_enrolled')->nullable();
             $table->integer('total_registered_hours')->nullable();
             $table->integer('total_finished_hours')->nullable();
-            $table->integer('max_register_hours')->nullable();
-            $table->integer('min_register_hours')->nullable();
+
             $table->float('GPA')->nullable();
             $table->float('CGPA')->nullable();
             $table->foreignId('supervisor_id')->nullable()->constrained('supervisors')->unsigned();

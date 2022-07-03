@@ -116,7 +116,7 @@
                                                     <div class="form-group mt-1">
                                                         <input type="checkbox"  value="1" name="status"
                                                                id="switcheryColor4" wire:model="status"
-                                                               class="switchery" data-color="success"
+                                                               class="" data-color="success"
                                                                checked/>
                                                         <label for="switcheryColor4"
                                                                class="card-title ml-1">الحالة </label>

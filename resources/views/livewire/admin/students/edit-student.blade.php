@@ -85,14 +85,8 @@
 
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label for="projectinput1">رقم الترم الدراسى </label>
-                                                        <input type="text"  id="semester"
-                                                               class="form-control" value="{{$student->semester}}"
-                                                               placeholder="الترم الدراسى  "
-                                                               name="semester" wire:model='semester'>
-                                                        @error('semester')
-                                                        <span class="text-danger">{{$message}} </span>
-                                                        @enderror
+                                                        <label for="projectinput1">رقم المستوى الدراسى </label>
+                                                        <h3 class="list-group-item">{{$student->semester}}</h3>
                                                     </div>
                                                 </div>
 
@@ -111,53 +105,22 @@
 
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label for="projectinput1"> عدد الساعات الأقصى </label>
-                                                        <input type="text"  id="max_register_hours"
-                                                               class="form-control" value="{{$student->max_register_hours}}"
-                                                               placeholder="عدد الساعات الأقصى  "
-                                                               name="max_register_hours" wire:model='max_register_hours'>
-                                                        @error('max_register_hours')
-                                                        <span class="text-danger">{{$message}} </span>
-                                                        @enderror
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label for="projectinput1"> عدد الساعات الأقل </label>
-                                                        <input type="text"  id="min_register_hours"
-                                                               class="form-control" value="{{$student->min_register_hours}}"
-                                                               placeholder="عدد الساعات الأقل  "
-                                                               name="min_register_hours" wire:model='min_register_hours'>
-                                                        @error('min_register_hours')
-                                                        <span class="text-danger">{{$message}} </span>
-                                                        @enderror
+                                                        <label for="projectinput1"> عدد الساعات المنجزه </label>
+                                                        <h3 class="list-group-item">{{$student->total_finished_hours}}</h3>
                                                     </div>
                                                 </div>
 
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label for="projectinput1"> GPA </label>
-                                                        <input type="text" id="GPA"
-                                                               class="form-control" value="{{$student->GPA}}"
-                                                               placeholder="سنة الإنضمام  "
-                                                               name="GPA" wire:model='GPA'>
-                                                        @error('GPA')
-                                                        <span class="text-danger">{{$message}} </span>
-                                                        @enderror
+                                                        <h3 class="list-group-item">{{$student->GPA}}</h3>
                                                     </div>
                                                 </div>
 
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label for="projectinput1"> CGPA </label>
-                                                        <input type="text"  id="CGPA"
-                                                               class="form-control" value="{{$student->CGPA}}"
-                                                               placeholder="سنة الإنضمام  "
-                                                               name="CGPA" wire:model='CGPA'>
-                                                        @error('CGPA')
-                                                        <span class="text-danger">{{$message}} </span>
-                                                        @enderror
+                                                        <h3 class="list-group-item ">{{$student->CGPA}}</h3>
                                                     </div>
                                                 </div>
 

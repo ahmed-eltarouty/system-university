@@ -14,14 +14,10 @@ class AddStudents extends Component
     public $code;
     public $phone;
     public $address;
-    public $semester;
     public $year_enrolled;
-    public $max_register_hours;
-    public $min_register_hours;
+
     public $supervisor_id;
     public $status;
-    public $GPA;
-    public $CGPA;
     public $email;
     public $password;
 
@@ -49,19 +45,15 @@ class AddStudents extends Component
 
 
     public function store(){
+        $this->validate();
         try{
-            $this->validate();
             User::create([
                 'name'=>$this->name,
                 'code'=>$this->code,
                 'phone'=>$this->phone,
                 'address'=>$this->address,
-                'semester'=>$this->semester,
                 'year_enrolled'=>$this->year_enrolled,
-                'max_register_hours'=>$this->max_register_hours,
-                'min_register_hours'=>$this->min_register_hours,
-                'GPA'=>$this->GPA,
-                'CGPA'=>$this->CGPA,
+
                 'supervisor_id'=>$this->supervisor_id,
                 'status'=>($this->status ? $this->status : 0),
                 'email'=>$this->email,
@@ -74,14 +66,10 @@ class AddStudents extends Component
             $this->code='';
             $this->phone='';
             $this->address='';
-            $this->semester='';
             $this->year_enrolled='';
-            $this->max_register_hours='';
-            $this->min_register_hours='';
+
             $this->supervisor_id='';
             $this->status='';
-            $this->GPA='';
-            $this->CGPA='';
             $this->email='';
             $this->password='';
 

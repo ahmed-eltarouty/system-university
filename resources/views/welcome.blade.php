@@ -45,60 +45,35 @@
 	<!-- navigation -->
 	<div class="main-top">
 		<div class="container d-lg-flex">
-			<!-- logo -->
-			<h1 class="logo-style-res float-left">
-				<a class="navbar-brand" href="index.html">
-					<img src="images/logo.png" alt="Benha Uni" class="img-fluid logo-img mt-1" style="width: 3em">University <span style="bottom:6px;right:20%"> system</span>
-				</a>
-			</h1>
-			<!-- //logo -->
+            <div class="row">
+                <!-- logo -->
+                <h1 class="logo-style-res float-left ">
+                    <a class="navbar-brand" href="index.html">
+                        <img src="images/logo.png" alt="Benha Uni" class="img-fluid logo-img mt-1" style="width: 3em">University <span style="bottom:6px;right:20%"> system</span>
+                    </a>
+                </h1>
+                <!-- //logo -->
+            </div>
 		</div>
 	</div>
 	<!-- //navigation -->
 	<!-- //header 2 -->
 
 	<!-- banner -->
-	<div class="banner_w3lspvt">
+	<div class="banner_w3lspvt ">
 		<div class="csslider infinity" id="slider1">
 			<input type="radio" name="slides" checked="checked" id="slides_1" />
-			<input type="radio" name="slides" id="slides_2" />
-			<input type="radio" name="slides" id="slides_3" />
 			<ul class="banner banner1">
 				<li class="banner-top1">
 					<div class="container">
-						<div class="banner-info_w3ls">
-							<h5 class="text-li ml-5">Welcome to</h5>
-							<h3 class="text-wh font-weight-bold mt-2 mb-5">Benha University <br> System </h3>
-							<p class="ml-5"> Get started now </p>
-						</div>
-					</div>
-				</li>
-				<li class="banner banner2">
-					<div class="container">
-						<div class="banner-info_w3ls">
-							<h5 class="text-li ml-5">Welcome to</h5>
-							<h3 class="text-wh font-weight-bold mt-2 mb-5">Benha University <br> System </h3>
-							<p class="ml-5"> Get started now </p>
-						</div>
-					</div>
-				</li>
-				<li class="banner banner3">
-					<div class="container">
-						<div class="banner-info_w3ls">
-							<h5 class="text-li ml-5">Welcome to</h5>
-							<h3 class="text-wh font-weight-bold mt-2 mb-5">Benha University <br> System </h3>
-							<p class="ml-5"> Get started now </p>
+						<div class="banner-info_w3ls " >
+							<h5 class="text-li ml-5 " >Welcome to</h5>
+							<h3 class="text-wh font-weight-bold mt-3 mb-5 text-dark">Benha University <br> System </h3>
+							<p class="ml-5 text-dark"> Get started now </p>
 						</div>
 					</div>
 				</li>
 			</ul>
-			<div class="navigation">
-				<div>
-					<label for="slides_1"></label>
-					<label for="slides_2"></label>
-					<label for="slides_3"></label>
-				</div>
-			</div>
 		</div>
 	</div>
 	<!-- //banner -->

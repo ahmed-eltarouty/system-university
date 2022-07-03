@@ -64,7 +64,7 @@
                                                 <optgroup label="اختر المادة ">
                                                     <option value="0">اختر المادة</option>
                                                     @foreach ($subs as $sub)
-                                                        <option value="{{$sub}}">{{\App\Models\Subject::find($sub)->name}}</option>
+                                                        <option value="{{$sub}}">{{isset(\App\Models\Subject::find($sub)->name) ? (\App\Models\Subject::find($sub)->name) : "تم حذف المادة"}}</optio
                                                     @endforeach
                                                 </optgroup>
                                             </select>

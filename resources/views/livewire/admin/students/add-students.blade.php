@@ -99,77 +99,12 @@
 
                                                     <div class="col-md-6">
                                                         <div class="form-group">
-                                                            <label for="projectinput1"> رقم الترم الدراسى </label>
-                                                            <input type="number" value="" id="semester"
-                                                                   class="form-control"
-                                                                   placeholder="الترم الدراسى  "
-                                                                   name="semester" wire:model='semester'>
-                                                            @error('semester')
-                                                            <span class="text-danger">{{$message}} </span>
-                                                            @enderror
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="col-md-6">
-                                                        <div class="form-group">
                                                             <label for="projectinput1"> سنة الإنضمام </label>
                                                             <input type="text" value="" id="year_enrolled"
                                                                    class="form-control"
                                                                    placeholder="سنة الإنضمام  "
                                                                    name="year_enrolled" wire:model='year_enrolled'>
                                                             @error('year_enrolled')
-                                                            <span class="text-danger">{{$message}} </span>
-                                                            @enderror
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="col-md-6">
-                                                        <div class="form-group">
-                                                            <label for="projectinput1"> عدد الساعات الأقصى </label>
-                                                            <input type="text" value="" id="max_register_hours"
-                                                                   class="form-control"
-                                                                   placeholder="عدد الساعات الأقصى  "
-                                                                   name="max_register_hours" wire:model='max_register_hours'>
-                                                            @error('max_register_hours')
-                                                            <span class="text-danger">{{$message}} </span>
-                                                            @enderror
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="col-md-6">
-                                                        <div class="form-group">
-                                                            <label for="projectinput1"> عدد الساعات الأقل </label>
-                                                            <input type="text" value="" id="min_register_hours"
-                                                                   class="form-control"
-                                                                   placeholder="عدد الساعات الأقل  "
-                                                                   name="min_register_hours" wire:model='min_register_hours'>
-                                                            @error('min_register_hours')
-                                                            <span class="text-danger">{{$message}} </span>
-                                                            @enderror
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="col-md-6">
-                                                        <div class="form-group">
-                                                            <label for="projectinput1"> GPA </label>
-                                                            <input type="text" value="" id="GPA"
-                                                                   class="form-control"
-                                                                   placeholder="GPA  "
-                                                                   name="GPA" wire:model='GPA'>
-                                                            @error('GPA')
-                                                            <span class="text-danger">{{$message}} </span>
-                                                            @enderror
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="col-md-6">
-                                                        <div class="form-group">
-                                                            <label for="projectinput1"> CGPA </label>
-                                                            <input type="text" value="" id="CGPA"
-                                                                   class="form-control"
-                                                                   placeholder="CGPA  "
-                                                                   name="CGPA" wire:model='CGPA'>
-                                                            @error('CGPA')
                                                             <span class="text-danger">{{$message}} </span>
                                                             @enderror
                                                         </div>
