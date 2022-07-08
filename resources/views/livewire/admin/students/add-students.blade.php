@@ -139,9 +139,9 @@
 
                                                     <div class="col-md-6">
                                                         <div class="form-group">
-                                                            <label for="projectinput2"> المشرف </label>
+                                                            <label for="projectinput2"> المرشد </label>
                                                             <select name="supervisor_id" wire:model="supervisor_id" class="select2 form-control">
-                                                                <optgroup label="من فضلك أختر المشرف ">
+                                                                <optgroup label="من فضلك أختر المرشد ">
                                                                     @foreach ($supervisors as $supervisor)
                                                                         <option value="{{$supervisor->id}}">{{$supervisor->name}}</option>
                                                                     @endforeach

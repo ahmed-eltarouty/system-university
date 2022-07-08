@@ -44,21 +44,21 @@
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label for="projectinput1"> اسم الطالب </label>
-                                                        <h3>{{$student->name}}</h3>
+                                                        <h3 class="form-control is-valid">{{$student->name}}</h3>
                                                     </div>
                                                 </div>
 
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label for="projectinput1"> كود الطالب </label>
-                                                        <h3>{{$student->code}}</h3>
+                                                        <h3 class="form-control is-valid">{{$student->code}}</h3>
                                                     </div>
                                                 </div>
 
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label for="projectinput1"> سنة الإنضمام </label>
-                                                        <h3>{{$student->year_enrolled}}</h3>
+                                                        <h3 class="form-control is-valid">{{$student->year_enrolled}}</h3>
                                                     </div>
                                                 </div>
 
@@ -80,7 +80,7 @@
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label for="projectinput1">رقم الترم الدراسى </label>
-                                                        <h3>{{$student->semester}}</h3>
+                                                        <h3 class="form-control is-valid">{{$student->semester}}</h3>
                                                     </div>
                                                 </div>
 
@@ -102,21 +102,21 @@
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label for="projectinput1"> عدد الساعات الأقصى </label>
-                                                        <h3>{{$student->max_register_hours}}</h3>
+                                                        <h3 class="form-control is-valid">{{$student->max_register_hours}}</h3>
                                                     </div>
                                                 </div>
 
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label for="projectinput1"> عدد الساعات الأقل </label>
-                                                        <h3>{{$student->min_register_hours}}</h3>
+                                                        <h3 class="form-control is-valid">{{$student->min_register_hours}}</h3>
                                                     </div>
                                                 </div>
 
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label for="projectinput1"> GPA </label>
-                                                        <h3>{{$student->GPA}}</h3>
+                                                        <h3 class="form-control is-valid">{{$student->GPA}}</h3>
                                                     </div>
                                                 </div>
 
@@ -136,7 +136,7 @@
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label for="projectinput1"> CGPA </label>
-                                                        <h3>{{$student->CGPA}}</h3>
+                                                        <h3 class="form-control is-valid">{{$student->CGPA}}</h3>
                                                     </div>
                                                 </div>
 
@@ -158,11 +158,11 @@
 
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label for="projectinput2"> المشرف </label>
+                                                        <label for="projectinput2"> المرشد </label>
                                                         @if($student->supervisor_id)
-                                                            <h3>{{$student->supervisor->name}}</h3>
+                                                            <h3 class="form-control is-valid">{{$student->supervisor->name}}</h3>
                                                         @else
-                                                            <span class="badge badge-danger">لم يتم تحديد المشرف</span>
+                                                            <span class="badge badge-danger">لم يتم تحديد المرشد</span>
                                                         @endif
                                                         {{-- <h3>{{\App\Models\Supervisor::find($supervisor_id)->first()->name}}</h3> --}}
                                                     </div>

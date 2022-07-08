@@ -82,31 +82,6 @@
                                                     </div>
                                                 </div>
 
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label for="projectinput1"> الدرجة العظمى </label>
-                                                        <input type="number" step=0.01 value="" id="max"
-                                                               class="form-control"
-                                                               placeholder="الدرجة العظمى  "
-                                                               name="max" wire:model='max'>
-                                                        @error('max')
-                                                        <span class="text-danger">{{$message}} </span>
-                                                        @enderror
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label for="projectinput1"> الدرجة الصغرى </label>
-                                                        <input type="number" step=0.01 value="" id="min"
-                                                               class="form-control"
-                                                               placeholder="الدرجة الصغرى  "
-                                                               name="min" wire:model='min'>
-                                                        @error('min')
-                                                        <span class="text-danger">{{$message}} </span>
-                                                        @enderror
-                                                    </div>
-                                                </div>
 
                                                 <div class="col-md-6">
                                                     <div class="form-group">
@@ -121,18 +96,6 @@
                                                     </div>
                                                 </div>
 
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label for="projectinput1"> GPA </label>
-                                                        <input type="number" step=0.01 value="" id="GPA"
-                                                               class="form-control"
-                                                               placeholder="فى حالة تطلب المادة GPA معين "
-                                                               name="GPA" wire:model='GPA'>
-                                                        @error('GPA')
-                                                        <span class="text-danger">{{$message}} </span>
-                                                        @enderror
-                                                    </div>
-                                                </div>
 
                                                 <div class="col-md-6">
                                                     <div class="form-group">

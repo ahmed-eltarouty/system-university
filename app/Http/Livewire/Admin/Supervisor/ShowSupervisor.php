@@ -35,7 +35,7 @@ class ShowSupervisor extends Component
                 Supervisor::find($this->supervisor)->delete();
             }
 
-            return session()->flash('success','تم حذف المشرف بنجاح ');
+            return session()->flash('success','تم حذف المرشد بنجاح ');
 
         }catch(\Exception $e){
             return session()->flash('error','عفواً حدث خطأ ما يرجى المحاولة مرة اخرى');

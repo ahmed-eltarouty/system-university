@@ -25,7 +25,7 @@ class AddSupervisor extends Component
 
 
     protected $messages =[
-        'name.required' => 'يجب ادخال اسم المشرف',
+        'name.required' => 'يجب ادخال اسم المرشد',
         'email.required' => 'عفوا يجب ادخال بريد الكترونى',
         'email.email' => 'عفوا البريد الالكترونى غير صحيح',
         'email.unique' => 'هذا البريد مسجل من قبل',
@@ -48,7 +48,7 @@ class AddSupervisor extends Component
                 'password'=>Hash::make($this->password),
                 'status'=>($this->status ? $this->status : 0)
             ]);
-            session()->flash('success','تم اضافة المشرف بنجاح');
+            session()->flash('success','تم اضافة المرشد بنجاح');
 
             $this->name='';
             $this->phone='';

@@ -40,7 +40,7 @@
                       <h1><i class="las la-chalkboard-teacher font-large-2"></i></h1>
                     </div>
                     <div class="col-5 pl-2">
-                      <h4>عدد المشرفين</h4>
+                      <h4>عدد المرشدين</h4>
                       <h6 class="text-muted">المسجلين</h6>
                     </div>
                     <div class="col-5 text-right">
@@ -151,7 +151,7 @@
                           <div class="row my-2">
                             <div class="col-4">
 
-                              <h5 class="text-bold-600 mb-0">@if($settings->semester_register)<span class="text-success">تسجيل ترم جديد مفتوح</span> @else <span class="text-danger">تسجيل ترم جديد مغلق</span> @endif</h5>
+                              <h5 class="text-bold-600 mb-0">@if($settings->semester_register)<span class="text-success">التسجيل مفتوح لـ</span> @else <span class="text-danger">التسجيل مفتوح لـ</span> @endif</h5>
                             </div>
                             <div class="col-8 text-left">
                               <p class="text-muted mb-0">@if($settings->semester_type)<span class="text-danger">ترم صيفى</span> @else <span class="text-success">ترم عادى</span> @endif</p>
@@ -177,17 +177,13 @@
                                     <h4  class="text-info">{{$settings->max_hours_CGPA_less_1}}</h4>
                                 </div>
                               </div>
-                              <div class="form-actions pb-0">
-
-                                <a href="{{route('admin.settings')}}" class="btn round btn-success btn-block btn-glow">تعديل الإعدادات </a>
-                              </div>
                             </div>
                           </form>
                         </div>
                         <div class="col-12 col-xl-6 pl-2 p-0">
                           <div class="row my-2">
                             <div class="col-4">
-                              <h5 class="text-bold-600 mb-0">@if(!$settings->semester_register)<span class="text-success">تسجيل ترم جديد مفتوح</span> @else <span class="text-danger">تسجيل ترم جديد مغلق</span> @endif</h5>
+                              <h5 class="text-bold-600 mb-0">@if(!$settings->semester_register)<span class="text-success"> التسجيل مفتوح لـ</span> @else <span class="text-danger">التسجيل مغلق لـ</span> @endif</h5>
                             </div>
                             <div class="col-8 text-left">
                               <p class="text-muted mb-0">@if(!$settings->semester_type)<span class="text-danger">ترم صيفى</span> @else <span class="text-success">ترم عادى</span> @endif</p>

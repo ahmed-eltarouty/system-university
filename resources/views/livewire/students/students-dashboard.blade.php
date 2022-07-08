@@ -11,7 +11,7 @@
                     <div class="col-2">
                       <h1><i class="las la-user-graduate font-large-2"></i></h1>
                     </div>
-                    <div class="col-5 pl-2">
+                    <div class="col-5">
                       <h4>رقم الترم الحالى</h4>
                     </div>
                     @php
@@ -27,8 +27,17 @@
                   </div>
                 </div>
                 <div class="row">
-                  <div class="col-12">
-                    <canvas id="btc-chartjs" class="height-75"></canvas>
+                  <div class="col-12 d-flex">
+                    <h1 class="d-flex  pl-2"><i class="las la-user-graduate font-large-2"></i></h1>
+                    @if($user->total_finished_hours < 28 )
+                        <h3 class="d-flex">المستوى الأول </h3>
+                    @elseif($user->total_finished_hours < 62 && $user->total_finished_hours >= 28)
+                        <h3 class="d-flex"> المستوى الثانى </h3>
+                    @elseif($user->total_finished_hours < 98 && $user->total_finished_hours >= 62)
+                        <h3 class="d-flex"> المستوى الثالث </h3>
+                    @elseif($user->total_finished_hours >= 98)
+                        <h3 class="d-flex"> المستوى الرابع </h3>
+                    @endif
                   </div>
                 </div>
               </div>
@@ -174,11 +183,11 @@
                                 </div>
                               </div>
                               <div class="form-group row">
-                                <label class="col-md-4 col-form-label" for="btc-limit-buy-total">اسم المشرف  </label>
+                                <label class="col-md-4 col-form-label" for="btc-limit-buy-total">اسم المرشد  </label>
                                 <div class="col-md-8">
                                     <h4 class="text-right">
                                       @if($user->supervisor_id == null)
-                                        <span class="badge badge-danger">لم يتم تحديد المشرف</span>
+                                        <span class="badge badge-danger">لم يتم تحديد المرشد</span>
                                       @else
                                         {{\App\Models\Supervisor::find($user->supervisor_id)->first()->name}}
                                       @endif
@@ -256,7 +265,7 @@
                                 <h3 class="mx-5 my-2 "> تاريخ تسجيل الترم : {{$semester->created_at->format('Y-m-d')}}</h3>
                                 <h3 class="mx-5 my-2"> GPA : {{$semester->GPA ? $semester->GPA : 'لم يتم احتسابه بعد'}}</h3>
                             </div>
-                            <table class="table display nowrap {{$semester->semester_status ? 'table-light' : ''}} table-striped table-hover table-bordered mb-5" id="studentstable">
+                            <table class="table display nowrap {{$semester->semester_status ? 'table-light' : ''}} table-striped table-hover table-bordered mb-5" id="userstable">
                                 <thead>
                                 <tr>
                                     <th> المادة</th>

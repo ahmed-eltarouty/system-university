@@ -23,7 +23,7 @@
 
 
             <li class="nav-item"><a href="#"><i class="la la-group"></i>
-                <span class="menu-title" data-i18n="nav.dash.main">المشرفين </span>
+                <span class="menu-title" data-i18n="nav.dash.main">المرشدين </span>
                 <span
                     class="badge badge badge-danger badge-pill float-right mr-2"></span>
             </a>

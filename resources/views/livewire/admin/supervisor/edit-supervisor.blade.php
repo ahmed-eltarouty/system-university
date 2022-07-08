@@ -39,15 +39,15 @@
                                         @csrf
 
                                         <div class="form-body">
-                                            <h4 class="form-section"><i class="las la-user-graduate"></i> بيانات  المشرف </h4>
+                                            <h4 class="form-section"><i class="las la-user-graduate"></i> بيانات  المرشد </h4>
 
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label for="projectinput1"> اسم المشرف </label>
+                                                        <label for="projectinput1"> اسم المرشد </label>
                                                         <input type="text"  id="name" value="{{$supervisor->name}}"
                                                                class="form-control"
-                                                               placeholder="ادخل اسم المشرف  "
+                                                               placeholder="ادخل اسم المرشد  "
                                                                name="name" wire:model='name'>
                                                         @error('name')
                                                         <span class="text-danger">{{$message}}</span>

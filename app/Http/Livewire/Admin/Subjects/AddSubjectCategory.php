@@ -33,6 +33,7 @@ class AddSubjectCategory extends Component
     public function updated($property)
     {
         $this->validateOnly($property);
+        $this->total_hours = $this->M_hours + $this->E_hours;
     }
 
     public function resetInput()
@@ -52,9 +53,9 @@ class AddSubjectCategory extends Component
             SubjectCategory::create([
                 'name' => $this->name,
                 'code' => $this->code,
-                'total_hours' => $this->total_hours,
                 'M_hours' => $this->M_hours,
                 'E_hours' => $this->E_hours,
+                'total_hours' => $this->M_hours + $this->E_hours ,
                 'specialization' => ($this->specialization ? $this->specialization : 0),
                 'status' => ($this->status ? $this->status : 0),
             ]);

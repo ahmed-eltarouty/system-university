@@ -64,7 +64,7 @@
                                                 <optgroup label="اختر المادة ">
                                                     <option value="0">اختر المادة</option>
                                                     @foreach ($subs as $sub)
-                                                        <option value="{{$sub}}">{{isset(\App\Models\Subject::find($sub)->name) ? (\App\Models\Subject::find($sub)->name) : "تم حذف المادة"}}</optio
+                                                        <option value="{{$sub}}">{{isset(\App\Models\Subject::find($sub)->name) ? (\App\Models\Subject::find($sub)->name) : "تم حذف المادة"}}</option>
                                                     @endforeach
                                                 </optgroup>
                                             </select>
@@ -108,15 +108,9 @@
 
                                                         <td>
 
-                                                                <input type="number" step=0.01 class="form-control"  placeholder="ادخل قيمة النقاط"  @if($valu == null) wire:model="result.{{$student->id}}" wire:key="{{ $loop->index}}" @else value="{{$valu}}" disabled='true' @endif >
-
-
-
+                                                                <input type="number" step=0.01 class="form-control"  placeholder="ادخل قيمة النقاط"  min="0" max="4"  required  @if($valu == null) wire:model="result.{{$student->id}}" wire:key="{{ $loop->index}}" @else value="{{$valu}}" disabled='true' @endif >
 
                                                         </td>
-
-
-
 
                                                     <td>
                                                         <div class="btn-group" role="group"  aria-label="Basic example">

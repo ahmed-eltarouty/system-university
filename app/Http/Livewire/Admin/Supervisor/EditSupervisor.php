@@ -39,7 +39,7 @@ class EditSupervisor extends Component
     ];
 
     protected $messages =[
-        'name.required' => 'يجب ادخال اسم المشرف',
+        'name.required' => 'يجب ادخال اسم المرشد',
         'email.required' => 'عفوا يجب ادخال بريد الكترونى',
         'email.email' => 'عفوا البريد الالكترونى غير صحيح',
         'email.unique' => 'هذا البريد مسجل من قبل',
@@ -64,7 +64,7 @@ class EditSupervisor extends Component
                 'status' => ($this->status ? $this->status : 0),
             ]);
 
-            session()->flash('success','تم تعديل المشرف بنجاح ');
+            session()->flash('success','تم تعديل المرشد بنجاح ');
 
         }catch(\Exception $e){
             return session()->flash('error','عفواً حدث خطأ ما يرجى المحاولة مرة اخرى');

@@ -85,8 +85,8 @@
 
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label for="projectinput1">رقم المستوى الدراسى </label>
-                                                        <h3 class="list-group-item">{{$student->semester}}</h3>
+                                                        <label for="projectinput1">رقم الترم الدراسى </label>
+                                                        <h3 class="form-control is-valid">{{$student->semester}}</h3>
                                                     </div>
                                                 </div>
 
@@ -106,21 +106,36 @@
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label for="projectinput1"> عدد الساعات المنجزه </label>
-                                                        <h3 class="list-group-item">{{$student->total_finished_hours}}</h3>
+                                                        <h3 class="form-control is-valid">{{$student->total_finished_hours}}</h3>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="projectinput1">  المستوى الدراسى </label>
+                                                        @if($student->total_finished_hours < 28 )
+                                                            <h3 class="form-control is-valid"> الأول </h3>
+                                                        @elseif($student->total_finished_hours < 62 && $student->total_finished_hours >= 28)
+                                                            <h3 class="form-control is-valid"> الثانى </h3>
+                                                        @elseif($student->total_finished_hours < 98 && $student->total_finished_hours >= 62)
+                                                            <h3 class="form-control is-valid"> الثالث </h3>
+                                                        @elseif($student->total_finished_hours >= 98)
+                                                            <h3 class="form-control is-valid"> الرابع </h3>
+                                                        @endif
                                                     </div>
                                                 </div>
 
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label for="projectinput1"> GPA </label>
-                                                        <h3 class="list-group-item">{{$student->GPA}}</h3>
+                                                        <h3 class="form-control is-valid">{{$student->GPA}}</h3>
                                                     </div>
                                                 </div>
 
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label for="projectinput1"> CGPA </label>
-                                                        <h3 class="list-group-item ">{{$student->CGPA}}</h3>
+                                                        <h3 class="form-control is-valid ">{{$student->CGPA}}</h3>
                                                     </div>
                                                 </div>
 
@@ -152,9 +167,9 @@
 
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label for="projectinput2"> المشرف </label>
+                                                        <label for="projectinput2"> المرشد </label>
                                                         <select name="supervisor_id" wire:model="supervisor_id"  class="select2 form-control">
-                                                            <optgroup label="من فضلك أختر المشرف ">
+                                                            <optgroup label="من فضلك أختر المرشد ">
                                                                 @foreach ($supervisors as $supervisor)
 
                                                                     <option value="{{$supervisor->id}}"  {{ ( $supervisor->id == $student->supervisor_id ) ? 'selected' : '' }}>{{$supervisor->name}}</option>

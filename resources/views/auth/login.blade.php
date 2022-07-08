@@ -10,7 +10,7 @@
           content="admin template, modern admin template, dashboard template, flat admin template, responsive admin template, web app, crypto dashboard, bitcoin dashboard">
     <meta name="author" content="PIXINVENT">
     @if( isset($guard))
-        <title>{{$guard == 'admin' ? 'تسجيل دخول الأدمن' : 'تسجيل دخول المشرف' }}  </title>
+        <title>{{$guard == 'admin' ? 'تسجيل دخول الأدمن' : 'تسجيل دخول المرشد' }}  </title>
     @else
         <title> تسجيل دخول الطلاب  </title>
     @endif
@@ -62,7 +62,7 @@
                         <div class="card border-grey border-lighten-3 m-0">
                             <div class="card-header border-0">
                                 @if( isset($guard))
-                                    <h2 class="text-center mb-2">تسجيل دخول {{$guard == 'admin' ? 'الأدمن' : 'المشرف'}}</h2>
+                                    <h2 class="text-center mb-2">تسجيل دخول {{$guard == 'admin' ? 'الأدمن' : 'المرشد'}}</h2>
                                 @else
                                     <h2 class="text-center mb-2">تسجيل دخول الطالب</h2>
                                 @endif
